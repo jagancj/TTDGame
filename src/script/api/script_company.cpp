@@ -19,7 +19,6 @@
 #include "../../strings_func.h"
 #include "../../tile_map.h"
 #include "../../string_func.h"
-#include "../../settings_func.h"
 #include "../../company_cmd.h"
 #include "../../misc_cmd.h"
 #include "../../object_cmd.h"
@@ -167,9 +166,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>();
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt64>();
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -293,7 +292,7 @@
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
 	/* Network commands only allow 0 to indicate invalid tiles, not INVALID_TILE */
-	return ScriptObject::Command<Commands::ChangeBankBalance>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, delta, ScriptCompany::FromScriptCompanyID(company), (::ExpensesType)expenses_type);
+	return ScriptObject::Command<Commands::ChangeBankBalance>::Do(tile == INVALID_TILE ? TileIndex{} : tile, delta, ScriptCompany::FromScriptCompanyID(company), (::ExpensesType)expenses_type);
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
@@ -347,7 +346,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
-	EnforcePrecondition(false, (int64_t)money <= UINT32_MAX);
+	EnforcePrecondition(false, money <= UINT32_MAX);
 	return ScriptObject::Command<Commands::ChangeCompanySetting>::Do("company.engine_renew_money", money);
 }
 
@@ -374,19 +373,19 @@
 /* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
 	EnforceCompanyModeValid(COLOUR_INVALID);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= LS_BEGIN);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < LS_END);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
 
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[scheme].colour1;
+	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour1;
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetSecondaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
 	EnforceCompanyModeValid(COLOUR_INVALID);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= LS_BEGIN);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < LS_END);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
 
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[scheme].colour2;
+	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour2;
 }

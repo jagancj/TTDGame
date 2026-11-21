@@ -15,6 +15,7 @@
 #include "command_type.h"
 #include "order_base.h"
 #include "cargopacket.h"
+#include "newgrf_type.h"
 #include "texteff.hpp"
 #include "engine_type.h"
 #include "order_func.h"
@@ -22,7 +23,7 @@
 #include "group_type.h"
 #include "base_consist.h"
 #include "network/network.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_type.h"
 #include "timer/timer_game_calendar.h"
 
 const uint TILE_AXIAL_DISTANCE = 192; ///< Logical length of the tile in any DiagDirection used in vehicle movement.
@@ -39,6 +40,8 @@ enum class VehState : uint8_t {
 	AircraftBroken = 6, ///< Aircraft is broken down.
 	Crashed        = 7, ///< Vehicle is crashed.
 };
+
+/** Bitset of \c VehState elements. */
 using VehStates = EnumBitSet<VehState, uint8_t>;
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
@@ -62,16 +65,6 @@ struct NewGRFCache {
 	uint8_t  cache_valid = 0; ///< Bitset that indicates which cache values are valid.
 
 	auto operator<=>(const NewGRFCache &) const = default;
-};
-
-/** Models for spawning visual effects. */
-enum VisualEffectSpawnModel : uint8_t {
-	VESM_NONE              = 0, ///< No visual effect
-	VESM_STEAM,                 ///< Steam model
-	VESM_DIESEL,                ///< Diesel model
-	VESM_ELECTRIC,              ///< Electric model
-
-	VESM_END
 };
 
 /**
@@ -158,7 +151,7 @@ struct VehicleSpriteSeq {
  * or calculating the viewport.
  */
 struct MutableSpriteCache {
-	Direction last_direction = INVALID_DIR; ///< Last direction we obtained sprites for
+	Direction last_direction = Direction::Invalid; ///< Last direction we obtained sprites for
 	bool revalidate_before_draw = false; ///< We need to do a GetImage() and check bounds before drawing this sprite
 	bool is_viewport_candidate = false; ///< This vehicle can potentially be drawn on a viewport
 	Rect old_coord{}; ///< Co-ordinates from the last valid bounding box
@@ -266,7 +259,7 @@ public:
 	int32_t x_pos = 0; ///< x coordinate.
 	int32_t y_pos = 0; ///< y coordinate.
 	int32_t z_pos = 0; ///< z coordinate.
-	Direction direction = INVALID_DIR; ///< facing
+	Direction direction = Direction::Invalid; ///< facing
 
 	Owner owner = INVALID_OWNER; ///< Which company owns the vehicle?
 	/**
@@ -345,8 +338,8 @@ public:
 	GroundVehicleCache *GetGroundVehicleCache();
 	const GroundVehicleCache *GetGroundVehicleCache() const;
 
-	uint16_t &GetGroundVehicleFlags();
-	const uint16_t &GetGroundVehicleFlags() const;
+	GroundVehicleFlags &GetGroundVehicleFlags();
+	const GroundVehicleFlags &GetGroundVehicleFlags() const;
 
 	void DeleteUnreachedImplicitOrders();
 
@@ -431,7 +424,7 @@ public:
 	 */
 	inline uint GetOldAdvanceSpeed(uint speed)
 	{
-		return (this->GetMovingDirection() & 1) ? speed : speed * 3 / 4;
+		return IsDiagonalDirection(this->GetMovingDirection()) ? speed : speed * 3 / 4;
 	}
 
 	/**
@@ -460,7 +453,7 @@ public:
 	 */
 	inline uint GetAdvanceDistance()
 	{
-		return (this->GetMovingDirection() & 1) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
+		return IsDiagonalDirection(this->GetMovingDirection()) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
 	}
 
 	/**
@@ -493,7 +486,7 @@ public:
 	virtual void GetImage([[maybe_unused]] Direction direction, [[maybe_unused]] EngineImageType image_type, [[maybe_unused]] VehicleSpriteSeq *result) const { result->Clear(); }
 
 	const GRFFile *GetGRF() const;
-	uint32_t GetGRFID() const;
+	GrfID GetGRFID() const;
 
 	/**
 	 * Invalidates cached NewGRF variables
@@ -609,7 +602,7 @@ public:
 	 * in depots), returns 0xFF.
 	 * @return the trackdir of the vehicle
 	 */
-	virtual Trackdir GetVehicleTrackdir() const { return INVALID_TRACKDIR; }
+	virtual Trackdir GetVehicleTrackdir() const { return Trackdir::Invalid; }
 
 	/**
 	 * Gets the running cost of a vehicle  that can be sent into string parameters for string processing.
@@ -1070,87 +1063,87 @@ struct SpecializedVehicle : public Vehicle {
 	}
 
 	/** @copydoc Vehicle::GetMovingFront() */
-	inline T *GetMovingFront() const { return (T *)this->Vehicle::GetMovingFront(); }
+	inline T *GetMovingFront() const { return static_cast<T *>(this->Vehicle::GetMovingFront()); }
 	/** @copydoc Vehicle::GetMovingBack() */
-	inline T *GetMovingBack() const { return (T *)this->Vehicle::GetMovingBack(); }
+	inline T *GetMovingBack() const { return static_cast<T *>(this->Vehicle::GetMovingBack()); }
 	/** @copydoc Vehicle::GetMovingNext() */
-	inline T *GetMovingNext() const { return (T *)this->Vehicle::GetMovingNext(); }
+	inline T *GetMovingNext() const { return static_cast<T *>(this->Vehicle::GetMovingNext()); }
 	/** @copydoc Vehicle::GetMovingPrev() */
-	inline T *GetMovingPrev() const { return (T *)this->Vehicle::GetMovingPrev(); }
+	inline T *GetMovingPrev() const { return static_cast<T *>(this->Vehicle::GetMovingPrev()); }
 
 	/**
 	 * Get the first vehicle in the chain
 	 * @return first vehicle in the chain
 	 */
-	inline T *First() const { return (T *)this->Vehicle::First(); }
+	inline T *First() const { return static_cast<T *>(this->Vehicle::First()); }
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	inline T *Last() { return (T *)this->Vehicle::Last(); }
+	inline T *Last() { return static_cast<T *>(this->Vehicle::Last()); }
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	inline const T *Last() const { return (const T *)this->Vehicle::Last(); }
+	inline const T *Last() const { return static_cast<const T *>(this->Vehicle::Last()); }
 
 	/**
 	 * Get next vehicle in the chain
 	 * @return next vehicle in the chain
 	 */
-	inline T *Next() const { return (T *)this->Vehicle::Next(); }
+	inline T *Next() const { return static_cast<T *>(this->Vehicle::Next()); }
 
 	/**
 	 * Get previous vehicle in the chain
 	 * @return previous vehicle in the chain
 	 */
-	inline T *Previous() const { return (T *)this->Vehicle::Previous(); }
+	inline T *Previous() const { return static_cast<T *>(this->Vehicle::Previous()); }
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	inline T *GetNextArticulatedPart() { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart() { return static_cast<T *>(this->Vehicle::GetNextArticulatedPart()); }
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	inline T *GetNextArticulatedPart() const { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart() const { return static_cast<T *>(this->Vehicle::GetNextArticulatedPart()); }
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	inline T *GetFirstEnginePart() { return (T *)this->Vehicle::GetFirstEnginePart(); }
+	inline T *GetFirstEnginePart() { return static_cast<T *>(this->Vehicle::GetFirstEnginePart()); }
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	inline const T *GetFirstEnginePart() const { return (const T *)this->Vehicle::GetFirstEnginePart(); }
+	inline const T *GetFirstEnginePart() const { return static_cast<const T *>(this->Vehicle::GetFirstEnginePart()); }
 
 	/**
 	 * Get the last part of an articulated engine.
 	 * @return Last part of the engine.
 	 */
-	inline T *GetLastEnginePart() { return (T *)this->Vehicle::GetLastEnginePart(); }
+	inline T *GetLastEnginePart() { return static_cast<T *>(this->Vehicle::GetLastEnginePart()); }
 
 	/**
 	 * Get the next real (non-articulated part) vehicle in the consist.
 	 * @return Next vehicle in the consist.
 	 */
-	inline T *GetNextVehicle() const { return (T *)this->Vehicle::GetNextVehicle(); }
+	inline T *GetNextVehicle() const { return static_cast<T *>(this->Vehicle::GetNextVehicle()); }
 
 	/**
 	 * Get the previous real (non-articulated part) vehicle in the consist.
 	 * @return Previous vehicle in the consist.
 	 */
-	inline T *GetPrevVehicle() const { return (T *)this->Vehicle::GetPrevVehicle(); }
+	inline T *GetPrevVehicle() const { return static_cast<T *>(this->Vehicle::GetPrevVehicle()); }
 
 	/**
 	 * Tests whether given index is a valid index for vehicle of this type
@@ -1169,7 +1162,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	static inline T *Get(auto index)
 	{
-		return (T *)Vehicle::Get(index);
+		return T::From(Vehicle::Get(index));
 	}
 
 	/**
@@ -1213,7 +1206,7 @@ struct SpecializedVehicle : public Vehicle {
 	static inline T *From(Vehicle *v)
 	{
 		assert(v->type == Type);
-		return (T *)v;
+		return static_cast<T *>(v);
 	}
 
 	/**
@@ -1224,7 +1217,7 @@ struct SpecializedVehicle : public Vehicle {
 	static inline const T *From(const Vehicle *v)
 	{
 		assert(v->type == Type);
-		return (const T *)v;
+		return static_cast<const T *>(v);
 	}
 
 	/**
@@ -1241,7 +1234,7 @@ struct SpecializedVehicle : public Vehicle {
 
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
-		if (update_delta) ((T *)this)->T::UpdateDeltaXY();
+		if (update_delta) static_cast<T *>(this)->T::UpdateDeltaXY();
 
 		/*
 		 * Only check for a new sprite sequence if the vehicle direction
@@ -1252,7 +1245,7 @@ struct SpecializedVehicle : public Vehicle {
 		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
 			VehicleSpriteSeq seq;
 
-			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
+			static_cast<T *>(this)->T::GetImage(this->direction, EngineImageType::OnMap, &seq);
 			if (this->sprite_cache.sprite_seq != seq) {
 				sprite_has_changed = true;
 				this->sprite_cache.sprite_seq = seq;

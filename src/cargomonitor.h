@@ -11,9 +11,7 @@
 #define CARGOMONITOR_H
 
 #include "cargo_type.h"
-#include "company_func.h"
-#include "industry.h"
-#include "town.h"
+#include "source_type.h"
 #include "core/overflowsafe_type.hpp"
 
 struct Station;
@@ -143,6 +141,6 @@ void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
 int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
 int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
-void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest = IndustryID::Invalid());
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, int amount, Source src, const Station *st, IndustryID dest = IndustryID::Invalid());
 
 #endif /* CARGOMONITOR_H */

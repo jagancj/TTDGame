@@ -389,7 +389,7 @@ STR_AI_SPEED_FAST                                               :तेज़
 ###length 4
 
 ###length 3
-STR_DISASTER_NORMAL                                             :सामान्य
+STR_BREAKDOWNS_NORMAL                                           :सामान्य
 
 ###length 4
 
@@ -536,6 +536,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :लाल व�
 
 
 
+
 ###length 4
 
 ###length 4
@@ -646,6 +647,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :कंप्य
 
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :दुर्घटनायें / आपदायें : {STRING}
+
+
 
 
 
@@ -1108,6 +1111,7 @@ STR_GOALS_PROGRESS                                              :{ORANGE}{STRING
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 
 # Goal question window
+###length 4
 
 # Goal Question button list
 ###length 18
@@ -1352,7 +1356,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 
 
 
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}क्षमता
+
+
 
 
 # Vehicle refit

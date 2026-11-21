@@ -972,9 +972,9 @@ STR_RIVERS_MODERATE                                             :درمیانے
 STR_RIVERS_LOT                                                  :بہت سے
 
 ###length 3
-STR_DISASTER_NONE                                               :کوئی نہیں
-STR_DISASTER_REDUCED                                            :کم
-STR_DISASTER_NORMAL                                             :نارمل
+STR_BREAKDOWNS_NONE                                             :کوئی نہیں
+STR_BREAKDOWNS_REDUCED                                          :کم
+STR_BREAKDOWNS_NORMAL                                           :نارمل
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5
@@ -1195,6 +1195,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تیل کے کارخانے صرف نقسے کی حدود کے قریب بنتے ہیں، جزیرہ والے نقشوں کیلئے یہ ساحل پر ہے
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :برف کی اونچائی: {STRING}
@@ -1304,11 +1305,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :قوقات کے
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :جلدی گاڑیوں کو احکامات دینا: {STRING}
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :کھیل شروع کرنے یا لوڈ کرنے کے بعد ریل گاڑی کی شروعاتی قسم: {STRING}
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :پہلی دستیاب
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :آخری دستیاب
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :زیادہ استعمال شدہ
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹریاں دکھائیں: {STRING}
 
@@ -1377,7 +1374,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :صنعتوں کی بندش: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :معیشت بدل گئی: {STRING}
 
@@ -2162,8 +2160,6 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}ک�
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}کارگو چین - {STRING}
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول کرنے والی صنعتیں۔
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}اس کے فروخت کنندہ اور گاہک کو دیکھنے کے لیے سامان پر کلک کریں۔
 
 # Land area window
 
@@ -2340,6 +2336,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :معلومات
 STR_GOAL_QUESTION_CAPTION_WARNING                               :انتباہ
@@ -2606,6 +2603,8 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 ###length VEHICLE_TYPES
 
 # Extra buttons for train details windows
+
+
 
 
 

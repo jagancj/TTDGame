@@ -382,7 +382,12 @@ static WindowDesc _select_game_desc(
 
 void ShowSelectGameWindow()
 {
+#ifdef __ANDROID__
+	/* Android uses the native Compose Main Menu overlay over the animated background. */
+	return;
+#else
 	new SelectGameWindow(_select_game_desc);
+#endif
 }
 
 static void AskExitGameCallback(Window *, bool confirmed)

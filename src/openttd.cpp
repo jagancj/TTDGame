@@ -666,6 +666,11 @@ int openttd_main(std::span<std::string_view> arguments)
 
 	LoadFromConfig(true);
 
+#ifdef __ANDROID__
+	/* Enable smooth viewport scrolling by default on mobile touchscreens. */
+	_settings_client.gui.smooth_scroll = true;
+#endif
+
 	if (resolution.width != 0) _cur_resolution = resolution;
 
 	/* Limit width times height times bytes per pixel to fit a 32 bit
@@ -730,7 +735,9 @@ int openttd_main(std::span<std::string_view> arguments)
 	 *  - Use 8bpp blitter otherwise.
 	 */
 	if (!_blitter_autodetected ||
+#ifndef __ANDROID__
 			(_support8bpp != Support8bpp::None && (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
+#endif
 			BlitterFactory::SelectBlitter("32bpp-anim") == nullptr) {
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			blitter.empty() ?
@@ -1150,6 +1157,7 @@ void SwitchToMode(SwitchMode new_mode)
 				ShowErrorMessage(GetEncodedString(STR_WARNING_FALLBACK_SOUNDSET), {}, WarningLevel::Critical);
 				BaseSounds::ini_set = BaseSounds::GetUsedSet()->name;
 			}
+#ifndef __ANDROID__
 			if (_settings_client.network.participate_survey == ParticipateSurvey::Ask) {
 				/* No matter how often you go back to the main menu, only ask the first time. */
 				static bool asked_once = false;
@@ -1158,6 +1166,7 @@ void SwitchToMode(SwitchMode new_mode)
 					ShowNetworkAskSurvey();
 				}
 			}
+#endif
 
 			UpdateSocialIntegration(GameMode::Menu);
 			break;

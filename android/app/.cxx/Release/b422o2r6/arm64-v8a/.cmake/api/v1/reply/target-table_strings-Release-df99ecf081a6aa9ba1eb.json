@@ -1,0 +1,81 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"add_custom_target_timestamp"
+		],
+		"files" : 
+		[
+			"cmake/AddCustomXXXTimestamp.cmake",
+			"src/lang/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 124,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 144,
+				"parent" : 1
+			}
+		]
+	},
+	"id" : "table_strings::@9e527a14cb585be0cbd9",
+	"name" : "table_strings",
+	"paths" : 
+	{
+		"build" : "src/lang",
+		"source" : "src/lang"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/lang/CMakeFiles/table_strings",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/lang/CMakeFiles/table_strings.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/lang/strings.h.timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

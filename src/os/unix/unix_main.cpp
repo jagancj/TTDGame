@@ -16,10 +16,28 @@
 #include <time.h>
 #include <signal.h>
 
+#ifdef __ANDROID__
+#include <SDL3/SDL_main.h>
+#include <SDL3/SDL_system.h>
+#include <stdlib.h>
+#include <string>
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
+
 #include "../../safeguards.h"
 
 int CDECL main(int argc, char *argv[])
 {
+#ifdef __ANDROID__
+	if (const char *internal_path = SDL_GetAndroidInternalStoragePath(); internal_path != nullptr) {
+		chdir(internal_path);
+		/* Keep HOME distinct from WorkingDir so DoScanWorkingDirectory() does not skip baseset/. */
+		std::string home_path = std::string(internal_path) + "/home";
+		mkdir(home_path.c_str(), 0755);
+		setenv("HOME", home_path.c_str(), 1);
+	}
+#endif
 	/* Make sure our arguments contain only valid UTF-8 characters. */
 	std::vector<std::string_view> params;
 	for (int i = 0; i < argc; ++i) {

@@ -1,0 +1,440 @@
+{
+  "buildFiles": [
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\3rdparty.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\FindLibUSB.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\GetGitRevisionDescription.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\GetGitRevisionDescription.cmake.in",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\macros.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedDOSCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedEmscriptenCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedHaikuCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedMSVCCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedNokiaNGageCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\PreseedOpenHarmonyCache.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\SDL3Config.cmake.in",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlchecks.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlcommands.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlcompilers.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlcpu.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlmanpages.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\cmake\\sdlplatform.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\android\\SDL3\\include\\build_config\\SDL_build_config.h.cmake",
+    "D:\\Games\\TTDGame\\android\\SDL3\\include\\build_config\\SDL_revision.h.cmake",
+    "D:\\Games\\TTDGame\\bin\\ai\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\bin\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\bin\\game\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\build-host\\settingsgen.cmake",
+    "D:\\Games\\TTDGame\\build-host\\strgen.cmake",
+    "D:\\Games\\TTDGame\\cmake\\3rdparty\\llvm\\CheckAtomic.cmake",
+    "D:\\Games\\TTDGame\\cmake\\AddCustomXXXTimestamp.cmake",
+    "D:\\Games\\TTDGame\\cmake\\CompileFlags.cmake",
+    "D:\\Games\\TTDGame\\cmake\\CreateRegression.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindAllegro.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindGrfcodec.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindLZO.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindOgg.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindOpus.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindOpusFile.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindSoxr.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FindSSE.cmake",
+    "D:\\Games\\TTDGame\\cmake\\FixVcpkgLibrary.cmake",
+    "D:\\Games\\TTDGame\\cmake\\InstallAndPackage.cmake",
+    "D:\\Games\\TTDGame\\cmake\\LinkPackage.cmake",
+    "D:\\Games\\TTDGame\\cmake\\MSVCFilters.cmake",
+    "D:\\Games\\TTDGame\\cmake\\Options.cmake",
+    "D:\\Games\\TTDGame\\cmake\\SourceList.cmake",
+    "D:\\Games\\TTDGame\\cmake\\Static.cmake",
+    "D:\\Games\\TTDGame\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\media\\baseset\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\media\\baseset\\openttd\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\media\\baseset\\orig_extra\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\media\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\regression\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\regression\\gs\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\regression\\gs_compat\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\regression\\regression\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\regression\\stationlist\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\catch2\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\fmt\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\icu\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\icu\\tests\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\md5\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\monocypher\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\nlohmann\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\opengl\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\openttd_social_integration_api\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\squirrel\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\squirrel\\include\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\squirrel\\sqstdlib\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\3rdparty\\squirrel\\squirrel\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\ai\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\blitter\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\core\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\fontcache\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\game\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\lang\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\linkgraph\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\misc\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\music\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\network\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\network\\core\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\newgrf\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\os\\android\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\os\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\os\\macosx\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\os\\unix\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\os\\windows\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\pathfinder\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\pathfinder\\yapf\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\saveload\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\saveload\\compat\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\script\\api\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\script\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\settingsgen\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\sound\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\spriteloader\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\strgen\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\table\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\table\\settings\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\timer\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\video\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\video\\cocoa\\CMakeLists.txt",
+    "D:\\Games\\TTDGame\\src\\widgets\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\CJ\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\Games\\TTDGame\\android\\app\\.cxx\\Release\\b422o2r6\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\CJ\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\Games\\TTDGame\\android\\app\\.cxx\\Release\\b422o2r6\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "Continuous::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "Continuous"
+    },
+    "ContinuousBuild::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousBuild"
+    },
+    "ContinuousConfigure::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousConfigure"
+    },
+    "ContinuousCoverage::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousCoverage"
+    },
+    "ContinuousMemCheck::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousMemCheck"
+    },
+    "ContinuousStart::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousStart"
+    },
+    "ContinuousSubmit::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousSubmit"
+    },
+    "ContinuousTest::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousTest"
+    },
+    "ContinuousUpdate::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ContinuousUpdate"
+    },
+    "Experimental::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "Experimental"
+    },
+    "ExperimentalBuild::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalBuild"
+    },
+    "ExperimentalConfigure::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalConfigure"
+    },
+    "ExperimentalCoverage::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalCoverage"
+    },
+    "ExperimentalMemCheck::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalMemCheck"
+    },
+    "ExperimentalStart::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalStart"
+    },
+    "ExperimentalSubmit::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalSubmit"
+    },
+    "ExperimentalTest::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalTest"
+    },
+    "ExperimentalUpdate::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ExperimentalUpdate"
+    },
+    "Nightly::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "Nightly"
+    },
+    "NightlyBuild::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyBuild"
+    },
+    "NightlyConfigure::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyConfigure"
+    },
+    "NightlyCoverage::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyCoverage"
+    },
+    "NightlyMemCheck::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyMemCheck"
+    },
+    "NightlyMemoryCheck::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyMemoryCheck"
+    },
+    "NightlyStart::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyStart"
+    },
+    "NightlySubmit::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlySubmit"
+    },
+    "NightlyTest::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyTest"
+    },
+    "NightlyUpdate::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "NightlyUpdate"
+    },
+    "SDL3-shared::@70d451f5601920adaf33": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "SDL3-shared",
+      "output": "D:\\Games\\TTDGame\\android\\app\\build\\intermediates\\cxx\\Release\\b422o2r6\\obj\\arm64-v8a\\libSDL3.so",
+      "runtimeFiles": []
+    },
+    "SDL3_test::@70d451f5601920adaf33": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "SDL3_test",
+      "output": "D:\\Games\\TTDGame\\android\\app\\.cxx\\Release\\b422o2r6\\arm64-v8a\\SDL3_build\\libSDL3_test.a"
+    },
+    "SDL_uclibc::@70d451f5601920adaf33": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "SDL_uclibc",
+      "output": "D:\\Games\\TTDGame\\android\\app\\.cxx\\Release\\b422o2r6\\arm64-v8a\\SDL3_build\\libSDL_uclibc.a"
+    },
+    "ai_compat_files::@64d2c50672dd04b101f8": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "ai_compat_files"
+    },
+    "baseset_files::@5ec75d7bc64d5d2ad699": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "baseset_files"
+    },
+    "desktop_file::@932148c3ebadde60b91d": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "desktop_file"
+    },
+    "find_version::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "find_version"
+    },
+    "gs_compat_files::@48720974bafa1c992af8": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "gs_compat_files"
+    },
+    "language_files::@9e527a14cb585be0cbd9": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "language_files"
+    },
+    "media_files::@932148c3ebadde60b91d": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "media_files"
+    },
+    "openttd::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "openttd",
+      "output": "D:\\Games\\TTDGame\\android\\app\\build\\intermediates\\cxx\\Release\\b422o2r6\\obj\\arm64-v8a\\libopenttd.so",
+      "runtimeFiles": [
+        "D:\\Games\\TTDGame\\android\\app\\build\\intermediates\\cxx\\Release\\b422o2r6\\obj\\arm64-v8a\\libSDL3.so"
+      ]
+    },
+    "openttd_lib::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "openttd_lib"
+    },
+    "regression::@0f5cd0f11dcecd4fc183": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression"
+    },
+    "regression_files::@0f5cd0f11dcecd4fc183": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_files"
+    },
+    "regression_gs::@18ac987713b4fc4bbb87": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_gs"
+    },
+    "regression_gs_compat::@1b2ccf37f6453c84698c": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_gs_compat"
+    },
+    "regression_gs_compat_files::@1b2ccf37f6453c84698c": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_gs_compat_files"
+    },
+    "regression_gs_files::@18ac987713b4fc4bbb87": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_gs_files"
+    },
+    "regression_regression::@c69eb560c26cc72351c6": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_regression"
+    },
+    "regression_regression_files::@c69eb560c26cc72351c6": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_regression_files"
+    },
+    "regression_stationlist::@4167a79f2cba139ed1a3": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_stationlist"
+    },
+    "regression_stationlist_files::@4167a79f2cba139ed1a3": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "regression_stationlist_files"
+    },
+    "script_ai::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_ai"
+    },
+    "script_ai_includes::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_ai_includes"
+    },
+    "script_game::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_game"
+    },
+    "script_game_includes::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_game_includes"
+    },
+    "script_template::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_template"
+    },
+    "script_window::@7c48e8bba4557c3c1dec": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "script_window"
+    },
+    "table_settings::@31b6bf0da3baabed56b6": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "table_settings"
+    },
+    "table_strings::@9e527a14cb585be0cbd9": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "table_strings"
+    },
+    "tools::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "tools"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "C:\\Users\\CJ\\AppData\\Local\\Android\\Sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\CJ\\AppData\\Local\\Android\\Sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cxx",
+    "cpp",
+    "cc"
+  ]
+}

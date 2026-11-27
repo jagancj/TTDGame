@@ -92,7 +92,7 @@ private:
 };
 
 inline constexpr WidgetDimensions WidgetDimensions::unscaled = {
-	.imgbtn        = { .left =  1, .top =  1, .right =  1, .bottom =  1},
+	.imgbtn        = { .left =  2, .top =  2, .right =  2, .bottom =  2},
 	.inset         = { .left =  2, .top =  1, .right =  2, .bottom =  1},
 	.vscrollbar    = { .left =  2, .top =  3, .right =  2, .bottom =  3},
 	.hscrollbar    = { .left =  3, .top =  2, .right =  3, .bottom =  2},

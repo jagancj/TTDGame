@@ -1,0 +1,237 @@
+C/C++ Structured Log#
+!
+D:\Games\TTDGame\CMakeLists.txtC
+A
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ÃºŸõ¡4Œˆ ¢µ–ğ¡40
+.
+,D:\Games\TTDGame\android\SDL3\CMakeLists.txt	ÃºŸõ¡4¾‚
+ À¢¦ûŸ46
+4
+2D:\Games\TTDGame\android\SDL3\cmake\3rdparty.cmake	ÃºŸõ¡4õ «£¦ûŸ48
+6
+4D:\Games\TTDGame\android\SDL3\cmake\FindLibUSB.cmake	ÃºŸõ¡4Î ¬£¦ûŸ4G
+E
+CD:\Games\TTDGame\android\SDL3\cmake\GetGitRevisionDescription.cmake	ÄºŸõ¡4Q ¬£¦ûŸ4J
+H
+FD:\Games\TTDGame\android\SDL3\cmake\GetGitRevisionDescription.cmake.in	ÄºŸõ¡4Ç ¬£¦ûŸ4=
+;
+9D:\Games\TTDGame\android\SDL3\cmake\PreseedDOSCache.cmake	ÄºŸõ¡4¢ ¬£¦ûŸ4D
+B
+@D:\Games\TTDGame\android\SDL3\cmake\PreseedEmscriptenCache.cmake	ÄºŸõ¡4	Ú› ¬£¦ûŸ4?
+=
+;D:\Games\TTDGame\android\SDL3\cmake\PreseedHaikuCache.cmake	ÄºŸõ¡4
+­¬ ¬£¦ûŸ4>
+<
+:D:\Games\TTDGame\android\SDL3\cmake\PreseedMSVCCache.cmake	ÄºŸõ¡4€ ¬£¦ûŸ4D
+B
+@D:\Games\TTDGame\android\SDL3\cmake\PreseedNokiaNGageCache.cmake	ÄºŸõ¡4¨– ¬£¦ûŸ4E
+C
+AD:\Games\TTDGame\android\SDL3\cmake\PreseedOpenHarmonyCache.cmake	ÄºŸõ¡4º’ ¬£¦ûŸ4;
+9
+7D:\Games\TTDGame\android\SDL3\cmake\SDL3Config.cmake.in	ÄºŸõ¡4Ğ ¬£¦ûŸ44
+2
+0D:\Games\TTDGame\android\SDL3\cmake\macros.cmake	ÅºŸõ¡4ë ¬£¦ûŸ47
+5
+3D:\Games\TTDGame\android\SDL3\cmake\sdlchecks.cmake	ÅºŸõ¡4¾² ¬£¦ûŸ49
+7
+5D:\Games\TTDGame\android\SDL3\cmake\sdlcommands.cmake	ÅºŸõ¡4ø‘ ¬£¦ûŸ4:
+8
+6D:\Games\TTDGame\android\SDL3\cmake\sdlcompilers.cmake	ÅºŸõ¡4ÜI ¬£¦ûŸ44
+2
+0D:\Games\TTDGame\android\SDL3\cmake\sdlcpu.cmake	ÅºŸõ¡4â, ¬£¦ûŸ49
+7
+5D:\Games\TTDGame\android\SDL3\cmake\sdlmanpages.cmake	ÅºŸõ¡4Û ¬£¦ûŸ49
+7
+5D:\Games\TTDGame\android\SDL3\cmake\sdlplatform.cmake	ÅºŸõ¡4À ¬£¦ûŸ4O
+M
+KD:\Games\TTDGame\android\SDL3\include\build_config\SDL_build_config.h.cmake	ÅºŸõ¡4ú¦ ¥¦ûŸ4K
+I
+GD:\Games\TTDGame\android\SDL3\include\build_config\SDL_revision.h.cmake	ÅºŸõ¡4¬
+ ¡¥¦ûŸ4]
+[
+YD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\additional_project_files.txt	ÅºŸõ¡4¼Í
+ Á«­ó¡4Z
+X
+VD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\android_gradle_build.json	ÅºŸõ¡4µ„ Ä«­ó¡4_
+]
+[D:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\android_gradle_build_mini.json	ÅºŸõ¡4Ó} ©±­ó¡4L
+J
+HD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\build.ninja	ÆºŸõ¡4¿à¡ õ¨­ó¡4P
+N
+LD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\build.ninja.txt	ÆºŸõ¡4U
+S
+QD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\build_file_index.txt	ÇºŸõ¡4ë' ¯±­ó¡4V
+T
+RD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\compile_commands.json	ÈºŸõ¡4áÑg õ¨­ó¡4Z
+X
+VD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\compile_commands.json.bin	ÈºŸõ¡4Ş£ õ¨­ó¡4`
+^
+\D:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\metadata_generation_command.txt	ÈºŸõ¡4 Ğ ñßíüŸ4S
+Q
+OD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\prefab_config.json	ÈºŸõ¡4!( ñßíüŸ4X
+V
+TD:\Games\TTDGame\android\app\.cxx\Release\b422o2r6\arm64-v8a\symbol_folder_index.txt	ÈºŸõ¡4"S ñßíüŸ4'
+%
+#D:\Games\TTDGame\bin\CMakeLists.txt	ÈºŸõ¡4#. Ü½ãçâ3*
+(
+&D:\Games\TTDGame\bin\ai\CMakeLists.txt	ÈºŸõ¡4$ ˜ÁÁøŸ4,
+*
+(D:\Games\TTDGame\bin\game\CMakeLists.txt	ÈºŸõ¡4%— ˜ÁÁøŸ41
+/
+-D:\Games\TTDGame\build-host\settingsgen.cmake	ÉºŸõ¡4&‚ É¬¨ûŸ4,
+*
+(D:\Games\TTDGame\build-host\strgen.cmake	ÉºŸõ¡4' É¬¨ûŸ4:
+8
+6D:\Games\TTDGame\cmake\3rdparty\llvm\CheckAtomic.cmake	ÉºŸõ¡4( ‚¾ãçâ36
+4
+2D:\Games\TTDGame\cmake\AddCustomXXXTimestamp.cmake	ÉºŸõ¡4)Í1 „¾ãçâ3-
++
+)D:\Games\TTDGame\cmake\CompileFlags.cmake	ÉºŸõ¡4*—+ ¡ÁÁøŸ41
+/
+-D:\Games\TTDGame\cmake\CreateRegression.cmake	ÉºŸõ¡4+ ¡ÁÁøŸ4,
+*
+(D:\Games\TTDGame\cmake\FindAllegro.cmake	ÉºŸõ¡4,ñ ¾ãçâ3-
++
+)D:\Games\TTDGame\cmake\FindGrfcodec.cmake	ÉºŸõ¡4-† ¾ãçâ3(
+&
+$D:\Games\TTDGame\cmake\FindLZO.cmake	ÉºŸõ¡4.¡ ’¾ãçâ3(
+&
+$D:\Games\TTDGame\cmake\FindOgg.cmake	ÉºŸõ¡4/	 “¾ãçâ3)
+'
+%D:\Games\TTDGame\cmake\FindOpus.cmake	ÊºŸõ¡40µ	 ”¾ãçâ3-
++
+)D:\Games\TTDGame\cmake\FindOpusFile.cmake	ÊºŸõ¡41ú
+ ”¾ãçâ3(
+&
+$D:\Games\TTDGame\cmake\FindSSE.cmake	ÊºŸõ¡42 •¾ãçâ3)
+'
+%D:\Games\TTDGame\cmake\FindSoxr.cmake	ÊºŸõ¡43„	 ¡ÁÁøŸ40
+.
+,D:\Games\TTDGame\cmake\FixVcpkgLibrary.cmake	ÊºŸõ¡44ì –¾ãçâ32
+0
+.D:\Games\TTDGame\cmake\InstallAndPackage.cmake	ÊºŸõ¡45¦] ¡ÁÁøŸ4,
+*
+(D:\Games\TTDGame\cmake\LinkPackage.cmake	ÌºŸõ¡46µ —¾ãçâ3,
+*
+(D:\Games\TTDGame\cmake\MSVCFilters.cmake	ÌºŸõ¡47› ˜¾ãçâ3(
+&
+$D:\Games\TTDGame\cmake\Options.cmake	ÌºŸõ¡48Ò) ¥‚¿øŸ4+
+)
+'D:\Games\TTDGame\cmake\SourceList.cmake	ÌºŸõ¡49ß ¶™åûŸ4'
+%
+#D:\Games\TTDGame\cmake\Static.cmake	ÌºŸõ¡4:– œ¾ãçâ3)
+'
+%D:\Games\TTDGame\media\CMakeLists.txt	ÌºŸõ¡4;Ä ¸¾ãçâ31
+/
+-D:\Games\TTDGame\media\baseset\CMakeLists.txt	ÌºŸõ¡4<ô ¸¾ãçâ39
+7
+5D:\Games\TTDGame\media\baseset\openttd\CMakeLists.txt	ÍºŸõ¡4=ï! ·ÁÁøŸ4<
+:
+8D:\Games\TTDGame\media\baseset\orig_extra\CMakeLists.txt	ÍºŸõ¡4>Ò ñ¾ãçâ3.
+,
+*D:\Games\TTDGame\regression\CMakeLists.txt	ÍºŸõ¡4?®	 ¹ÁÁøŸ41
+/
+-D:\Games\TTDGame\regression\gs\CMakeLists.txt	ÍºŸõ¡4@ ¼ÁÁøŸ48
+6
+4D:\Games\TTDGame\regression\gs_compat\CMakeLists.txt	ÍºŸõ¡4Aâ ÉÁÁøŸ49
+7
+5D:\Games\TTDGame\regression\regression\CMakeLists.txt	ÍºŸõ¡4B ÌÁÁøŸ4:
+8
+6D:\Games\TTDGame\regression\stationlist\CMakeLists.txt	ÍºŸõ¡4Cà ÒÁÁøŸ40
+.
+,D:\Games\TTDGame\src\3rdparty\CMakeLists.txt	ÍºŸõ¡4D Ö¿ãçâ37
+5
+3D:\Games\TTDGame\src\3rdparty\catch2\CMakeLists.txt	ÍºŸõ¡4E ×¿ãçâ34
+2
+0D:\Games\TTDGame\src\3rdparty\fmt\CMakeLists.txt	ÍºŸõ¡4Fä á¿ãçâ34
+2
+0D:\Games\TTDGame\src\3rdparty\icu\CMakeLists.txt	ÍºŸõ¡4Gl ÒÁÁøŸ4:
+8
+6D:\Games\TTDGame\src\3rdparty\icu\tests\CMakeLists.txt	ÍºŸõ¡4HG ÒÁÁøŸ44
+2
+0D:\Games\TTDGame\src\3rdparty\md5\CMakeLists.txt	ÍºŸõ¡4I' ü¿ãçâ3;
+9
+7D:\Games\TTDGame\src\3rdparty\monocypher\CMakeLists.txt	ÍºŸõ¡4Jk ÿ¿ãçâ39
+7
+5D:\Games\TTDGame\src\3rdparty\nlohmann\CMakeLists.txt	ÎºŸõ¡4K ‡Àãçâ37
+5
+3D:\Games\TTDGame\src\3rdparty\opengl\CMakeLists.txt	ÎºŸõ¡4L Àãçâ3O
+M
+KD:\Games\TTDGame\src\3rdparty\openttd_social_integration_api\CMakeLists.txt	ÎºŸõ¡4M^ Àãçâ39
+7
+5D:\Games\TTDGame\src\3rdparty\squirrel\CMakeLists.txt	ÎºŸõ¡4NS ŸÀãçâ3A
+?
+=D:\Games\TTDGame\src\3rdparty\squirrel\include\CMakeLists.txt	ÎºŸõ¡4O@ ¡Àãçâ3B
+@
+>D:\Games\TTDGame\src\3rdparty\squirrel\sqstdlib\CMakeLists.txt	ÎºŸõ¡4P4 £Àãçâ3B
+@
+>D:\Games\TTDGame\src\3rdparty\squirrel\squirrel\CMakeLists.txt	ÎºŸõ¡4QÓ ¤Àãçâ3'
+%
+#D:\Games\TTDGame\src\CMakeLists.txt	ÎºŸõ¡4Rœ_ ÑšåûŸ4*
+(
+&D:\Games\TTDGame\src\ai\CMakeLists.txt	ÎºŸõ¡4Sæ ¼Àãçâ3/
+-
++D:\Games\TTDGame\src\blitter\CMakeLists.txt	ÎºŸõ¡4Tú õÀãçâ3,
+*
+(D:\Games\TTDGame\src\core\CMakeLists.txt	ÎºŸõ¡4Ué úÁÁøŸ41
+/
+-D:\Games\TTDGame\src\fontcache\CMakeLists.txt	ÏºŸõ¡4V½ ¼Âãçâ3,
+*
+(D:\Games\TTDGame\src\game\CMakeLists.txt	ÏºŸõ¡4W¤ ËÂãçâ3,
+*
+(D:\Games\TTDGame\src\lang\CMakeLists.txt	ÏºŸõ¡4Xé+ ¯Ããçâ31
+/
+-D:\Games\TTDGame\src\linkgraph\CMakeLists.txt	ÏºŸõ¡4YŒ îÇãçâ3,
+*
+(D:\Games\TTDGame\src\misc\CMakeLists.txt	ÏºŸõ¡4Z ˆÈãçâ3-
++
+)D:\Games\TTDGame\src\music\CMakeLists.txt	ÏºŸõ¡4[— šÈãçâ3/
+-
++D:\Games\TTDGame\src\network\CMakeLists.txt	ÏºŸõ¡4\õ ®Èãçâ34
+2
+0D:\Games\TTDGame\src\network\core\CMakeLists.txt	ÏºŸõ¡4]¤ ®Èãçâ3.
+,
+*D:\Games\TTDGame\src\newgrf\CMakeLists.txt	ÏºŸõ¡4^î òÈãçâ3*
+(
+&D:\Games\TTDGame\src\os\CMakeLists.txt	ÏºŸõ¡4_‚ Íù¥ó¡42
+0
+.D:\Games\TTDGame\src\os\android\CMakeLists.txt	ĞºŸõ¡4`7 å‰¦ó¡41
+/
+-D:\Games\TTDGame\src\os\macosx\CMakeLists.txt	ĞºŸõ¡4aÀ Êãçâ3/
+-
++D:\Games\TTDGame\src\os\unix\CMakeLists.txt	ĞºŸõ¡4bô ˜Êãçâ32
+0
+.D:\Games\TTDGame\src\os\windows\CMakeLists.txt	ÑºŸõ¡4cÄ ˜Êãçâ32
+0
+.D:\Games\TTDGame\src\pathfinder\CMakeLists.txt	ÑºŸõ¡4d™ ¨Êãçâ37
+5
+3D:\Games\TTDGame\src\pathfinder\yapf\CMakeLists.txt	ÑºŸõ¡4eã ¸Êãçâ30
+.
+,D:\Games\TTDGame\src\saveload\CMakeLists.txt	ÑºŸõ¡4fÓ ½ÅÁøŸ47
+5
+3D:\Games\TTDGame\src\saveload\compat\CMakeLists.txt	ÑºŸõ¡4gŸ ‚Ëãçâ3.
+,
+*D:\Games\TTDGame\src\script\CMakeLists.txt	ÑºŸõ¡4hÏ ÂËãçâ32
+0
+.D:\Games\TTDGame\src\script\api\CMakeLists.txt	ÑºŸõ¡4i§M ŞÅÁøŸ43
+1
+/D:\Games\TTDGame\src\settingsgen\CMakeLists.txt	ÑºŸõ¡4jŸ ¼Íãçâ3-
++
+)D:\Games\TTDGame\src\sound\CMakeLists.txt	ÑºŸõ¡4kÌ ÆÁøŸ44
+2
+0D:\Games\TTDGame\src\spriteloader\CMakeLists.txt	ÑºŸõ¡4l– ‚Îãçâ3.
+,
+*D:\Games\TTDGame\src\strgen\CMakeLists.txt	ÑºŸõ¡4mŞ •Îãçâ3-
++
+)D:\Games\TTDGame\src\table\CMakeLists.txt	ÑºŸõ¡4n¶  ÆÁøŸ46
+4
+2D:\Games\TTDGame\src\table\settings\CMakeLists.txt	ÒºŸõ¡4oÒ ÖÎãçâ3-
++
+)D:\Games\TTDGame\src\timer\CMakeLists.txt	ÒºŸõ¡4på °Ïãçâ3-
++
+)D:\Games\TTDGame\src\video\CMakeLists.txt	ÒºŸõ¡4qº óÆÁøŸ43
+1
+/D:\Games\TTDGame\src\video\cocoa\CMakeLists.txt	ÒºŸõ¡4rÒ ­Ğãçâ3/
+-
++D:\Games\TTDGame\src\widgets\CMakeLists.txt	ÒºŸõ¡4sÂ
+ ŞĞãçâ3

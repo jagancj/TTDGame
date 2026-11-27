@@ -125,4 +125,7 @@ inline void SetViewportCatchmentSpecializedStation(const Waypoint *st, bool sel)
 	SetViewportCatchmentWaypoint(st, sel);
 }
 
+bool ViewportPan(int delta_x, int delta_y, int focus_x = -1, int focus_y = -1, Window *w = nullptr);
+bool ViewportPinchZoom(bool in, int focus_x, int focus_y, Window *w = nullptr);
+
 #endif /* VIEWPORT_FUNC_H */

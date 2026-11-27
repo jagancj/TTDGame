@@ -33,6 +33,10 @@
 #	include <emscripten.h>
 #endif
 
+#ifdef __ANDROID__
+#	include <android/log.h>
+#endif
+
 #ifdef __APPLE__
 #	include <sys/mount.h>
 #elif (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
@@ -186,12 +190,18 @@ std::string FS2OTTD(std::string_view name)
 
 void ShowInfoI(std::string_view str)
 {
+#ifdef __ANDROID__
+	__android_log_print(ANDROID_LOG_INFO, "OpenTTD", "%.*s", static_cast<int>(str.size()), str.data());
+#endif
 	fmt::print(stderr, "{}\n", str);
 }
 
 #if !defined(__APPLE__)
 void ShowOSErrorBox(std::string_view buf, bool)
 {
+#ifdef __ANDROID__
+	__android_log_print(ANDROID_LOG_ERROR, "OpenTTD", "Error: %.*s", static_cast<int>(buf.size()), buf.data());
+#endif
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
 		fmt::print(stderr, "\033[1;31mError: {}\033[0;39m\n", buf);

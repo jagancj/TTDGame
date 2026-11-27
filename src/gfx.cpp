@@ -1361,6 +1361,14 @@ void DrawMouseCursor()
 	/* Redraw mouse cursor but only when it's inside the window */
 	if (!_cursor.in_window) return;
 
+#ifdef __ANDROID__
+	/* Hide the idle desktop arrow cursor on touchscreen devices. */
+	if (_cursor.sprites.empty() || (_cursor.sprites.size() == 1 && _cursor.sprites[0].image.sprite == SPR_CURSOR_MOUSE)) {
+		UndrawMouseCursor();
+		return;
+	}
+#endif
+
 	/* Don't draw the mouse cursor if it's already drawn */
 	if (_cursor.visible) {
 		if (!_cursor.dirty) return;
@@ -1818,7 +1826,15 @@ static int GetTargetScale(float width, float height)
  */
 int GetAutomaticScale()
 {
-	return GetTargetScale(640, 480);
+	int scale = GetTargetScale(640, 480);
+	if (VideoDriver::GetInstance() != nullptr) {
+		float dpi_scale = VideoDriver::GetInstance()->GetDPIScale();
+		if (dpi_scale > 1.0f) {
+			int dpi_target = Clamp((static_cast<int>(dpi_scale * 100.0f) / 25) * 25, MIN_INTERFACE_SCALE, GetMaximumScale());
+			scale = std::max(scale, dpi_target);
+		}
+	}
+	return scale;
 }
 
 /**
@@ -1827,7 +1843,11 @@ int GetAutomaticScale()
  */
 int GetMaximumScale()
 {
+#ifdef __ANDROID__
+	return GetTargetScale(480, 270);
+#else
 	return GetTargetScale(480, 360);
+#endif
 }
 
 /**

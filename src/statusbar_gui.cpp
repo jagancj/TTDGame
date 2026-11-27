@@ -241,5 +241,10 @@ bool IsNewsTickerShown()
  */
 void ShowStatusBar()
 {
+#ifdef __ANDROID__
+	/* Android uses the native Compose HUD overlay instead of the desktop statusbar. */
+	return;
+#else
 	new StatusBarWindow(_main_status_desc);
+#endif
 }

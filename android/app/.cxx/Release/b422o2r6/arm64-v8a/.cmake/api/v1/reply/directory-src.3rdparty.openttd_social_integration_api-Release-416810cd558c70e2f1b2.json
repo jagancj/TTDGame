@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "src/3rdparty/openttd_social_integration_api",
+		"source" : "src/3rdparty/openttd_social_integration_api"
+	}
+}

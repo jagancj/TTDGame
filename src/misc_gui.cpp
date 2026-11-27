@@ -1232,3 +1232,158 @@ void ShowQuery(EncodedString &&caption, EncodedString &&message, Window *parent,
 	QueryWindow *q = new QueryWindow(_query_desc, std::move(caption), std::move(message), parent, callback);
 	if (focus) SetFocusedWindow(q);
 }
+
+enum ConstructionConfirmWidgets {
+	WID_CC_CAPTION,
+	WID_CC_TEXT,
+	WID_CC_CANCEL,
+	WID_CC_APPLY,
+};
+
+class ConstructionConfirmWindow : public Window {
+private:
+	std::string caption;
+	std::string message;
+	std::function<void()> on_apply;
+	std::function<void()> on_cancel;
+	bool action_taken = false;
+
+public:
+	ConstructionConfirmWindow(WindowDesc &desc, std::string &&caption, std::string &&message, std::function<void()> on_apply, std::function<void()> on_cancel)
+		: Window(desc), caption(std::move(caption)), message(std::move(message)), on_apply(std::move(on_apply)), on_cancel(std::move(on_cancel))
+	{
+		this->InitNested(ConfirmPopupQueryWindowNumber::Construction);
+	}
+
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		if (!this->action_taken && this->on_cancel) {
+			this->action_taken = true;
+			this->on_cancel();
+		}
+		this->Window::Close();
+	}
+
+	void FindWindowPlacementAndResize(int, int, bool) override
+	{
+		this->left = (_screen.width - this->width) / 2;
+		this->top = (_screen.height - this->height) / 2;
+		this->SetDirty();
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		switch (widget) {
+			case WID_CC_CAPTION:
+				return this->caption;
+
+			case WID_CC_APPLY:
+				return "Apply";
+
+			case WID_CC_CANCEL:
+				return "Cancel";
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
+		}
+	}
+
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	{
+		if (widget != WID_CC_TEXT) return;
+
+		size = GetStringMultiLineBoundingBox(this->message, size);
+	}
+
+	void DrawWidget(const Rect &r, WidgetID widget) const override
+	{
+		if (widget != WID_CC_TEXT) return;
+
+		DrawStringMultiLine(r, this->message, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
+	}
+
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		switch (widget) {
+			case WID_CC_APPLY: {
+				std::function<void()> apply = std::move(this->on_apply);
+				this->action_taken = true;
+				this->Close();
+				if (apply) apply();
+				break;
+			}
+
+			case WID_CC_CANCEL: {
+				std::function<void()> cancel = std::move(this->on_cancel);
+				this->action_taken = true;
+				this->Close();
+				if (cancel) cancel();
+				break;
+			}
+		}
+	}
+
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
+	{
+		switch (keycode) {
+			case WKC_RETURN:
+			case WKC_NUM_ENTER: {
+				std::function<void()> apply = std::move(this->on_apply);
+				this->action_taken = true;
+				this->Close();
+				if (apply) apply();
+				return EventState::Handled;
+			}
+
+			case WKC_ESC: {
+				std::function<void()> cancel = std::move(this->on_cancel);
+				this->action_taken = true;
+				this->Close();
+				if (cancel) cancel();
+				return EventState::Handled;
+			}
+		}
+		return EventState::NotHandled;
+	}
+};
+
+static constexpr std::initializer_list<NWidgetPart> _nested_construction_confirm_widgets = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, Colours::Red),
+		NWidget(WWT_CAPTION, Colours::Red, WID_CC_CAPTION),
+	EndContainer(),
+	NWidget(WWT_PANEL, Colours::Red),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_CC_TEXT), SetMinimalSize(220, 16),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.hsep_indent),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_CC_CANCEL), SetMinimalSize(90, 24), SetFill(1, 1), SetStringTip(STR_BUTTON_CANCEL),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_CC_APPLY), SetMinimalSize(90, 24), SetFill(1, 1), SetStringTip(STR_JUST_RAW_STRING),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _construction_confirm_desc(
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::ConfirmPopupQuery, WindowClass::None,
+	WindowDefaultFlag::Modal,
+	_nested_construction_confirm_widgets
+);
+
+void ShowConstructionConfirmOverlay(std::string caption, std::string message, std::function<void()> on_apply, std::function<void()> on_cancel)
+{
+#ifdef __ANDROID__
+	extern void AndroidShowConstructionConfirm(std::string caption, std::string message, std::function<void()> on_apply, std::function<void()> on_cancel);
+	AndroidShowConstructionConfirm(std::move(caption), std::move(message), std::move(on_apply), std::move(on_cancel));
+#else
+	for (Window *w : Window::Iterate()) {
+		if (w->window_class != WindowClass::ConfirmPopupQuery) continue;
+		if (w->window_number != ConfirmPopupQueryWindowNumber::Construction) continue;
+
+		w->Close();
+		break;
+	}
+
+	new ConstructionConfirmWindow(_construction_confirm_desc, std::move(caption), std::move(message), std::move(on_apply), std::move(on_cancel));
+#endif
+}

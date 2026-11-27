@@ -47,6 +47,7 @@
 #include "linkgraph/linkgraph_gui.h"
 #include "linkgraph/linkgraphschedule.h"
 #include "newgrf_debug.h"
+#include "zoom_func.h"
 #include "hotkeys.h"
 #include "highscore.h"
 #include "goal_base.h"
@@ -1415,6 +1416,10 @@ public:
 			}
 		}
 
+		/* Ensure minimum touch target dimensions for high-DPI touchscreens */
+		this->smallest_x = std::max(this->smallest_x, (uint)ScaleGUITrad(28));
+		this->smallest_y = std::max(this->smallest_y, (uint)ScaleGUITrad(28));
+
 		/* ... then in a second pass make sure the 'current' heights are set. Won't change ever. */
 		for (const auto &child_wid : this->children) {
 			child_wid->current_y = this->smallest_y;
@@ -2620,9 +2625,14 @@ static WindowDesc _toolb_scen_desc(
 /** Allocate the toolbar. */
 void AllocateToolbar()
 {
+#ifdef __ANDROID__
+	/* Android uses the native Compose HUD overlay instead of the desktop toolbar. */
+	return;
+#else
 	if (_game_mode == GameMode::Editor) {
 		new ScenarioEditorToolbarWindow(_toolb_scen_desc);
 	} else {
 		new MainToolbarWindow(_toolb_normal_desc);
 	}
+#endif
 }

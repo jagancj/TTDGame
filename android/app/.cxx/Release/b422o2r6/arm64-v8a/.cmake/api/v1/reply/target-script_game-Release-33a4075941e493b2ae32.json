@@ -1,0 +1,613 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"add_custom_target_timestamp",
+			"add_dependencies"
+		],
+		"files" : 
+		[
+			"cmake/AddCustomXXXTimestamp.cmake",
+			"src/script/api/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 68,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 144,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 72,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "script_window::@7c48e8bba4557c3c1dec"
+		}
+	],
+	"id" : "script_game::@7c48e8bba4557c3c1dec",
+	"name" : "script_game",
+	"paths" : 
+	{
+		"build" : "src/script/api",
+		"source" : "src/script/api"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/CMakeFiles/script_game",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/CMakeFiles/script_game.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_accounting.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_admin.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_airport.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_asyncmode.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_base.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_basestation.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_bridge.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_bridgelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_cargo.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_cargolist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_cargomonitor.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_client.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_clientlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_company.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_companymode.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_date.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_depot.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_depotlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_engine.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_enginelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_error.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_event.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_event_types.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_execmode.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_game.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_gamesettings.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_goal.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_group.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_grouplist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_industry.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_industrylist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_industrytype.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_industrytypelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_info_docs.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_infrastructure.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_league.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_list.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_log.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_log_types.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_map.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_marine.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_newgrf.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_news.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_object.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_objecttype.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_objecttypelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_order.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_priorityqueue.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_rail.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_railtypelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_road.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_roadtypelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_sign.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_signlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_station.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_stationlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_story_page.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_storypageelementlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_storypagelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_subsidy.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_subsidylist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_testmode.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_text.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_tile.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_tilelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_town.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_townlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_tunnel.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_types.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_vehicle.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_vehiclelist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_viewport.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_waypoint.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_waypointlist.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/src/script/api/game_window.sq.hpp.timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

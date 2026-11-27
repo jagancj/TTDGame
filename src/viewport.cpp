@@ -3856,3 +3856,89 @@ void ViewportData::CancelFollow(const Window &viewport_window)
 	this->dest_scrollpos_y = this->scrollpos_y;
 	this->follow_vehicle = VehicleID::Invalid();
 }
+
+/**
+ * Zoom in or out centered on a specific screen coordinate (e.g. from pinch-to-zoom).
+ * @param in True to zoom in, false to zoom out.
+ * @param focus_x Screen X coordinate of the pinch center.
+ * @param focus_y Screen Y coordinate of the pinch center.
+ * @param w Window containing the viewport (or nullptr to auto-detect from focus or main window).
+ * @return True if zooming occurred.
+ */
+bool ViewportPinchZoom(bool in, int focus_x, int focus_y, Window *w)
+{
+	if (w == nullptr) {
+		if (focus_x >= 0 && focus_y >= 0) {
+			w = FindWindowFromPt(focus_x, focus_y);
+		}
+		if (w == nullptr || w->viewport == nullptr) {
+			w = GetMainWindow();
+		}
+	}
+	if (w == nullptr || w->viewport == nullptr) return false;
+
+	if (_game_mode == GameMode::Menu) return false;
+
+	ViewportData &vp = *w->viewport;
+	if ((in && vp.zoom <= _settings_client.gui.zoom_min) || (!in && vp.zoom >= _settings_client.gui.zoom_max)) {
+		return false;
+	}
+
+	w->viewport->CancelFollow(*w);
+
+	/* Determine target zoom center point in world coordinates */
+	int x, y;
+	if (in) {
+		x = ((focus_x - vp.left) >> 1) + (vp.width >> 2);
+		y = ((focus_y - vp.top) >> 1) + (vp.height >> 2);
+	} else {
+		x = vp.width - (focus_x - vp.left);
+		y = vp.height - (focus_y - vp.top);
+	}
+	Point pt = GetTileFromScreenXY(focus_x, focus_y, x + vp.left, y + vp.top);
+	if (pt.x != -1) {
+		ScrollWindowTo(pt.x, pt.y, -1, w, true);
+		return DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
+	}
+	return false;
+}
+
+/**
+ * Pan a viewport by screen pixel deltas (e.g. from two-finger touch panning).
+ * @param delta_x Horizontal pixel delta.
+ * @param delta_y Vertical pixel delta.
+ * @param focus_x Screen X coordinate of the touch midpoint.
+ * @param focus_y Screen Y coordinate of the touch midpoint.
+ * @param w Window containing the viewport (or nullptr to auto-detect from focus or main window).
+ * @return True if panning occurred.
+ */
+bool ViewportPan(int delta_x, int delta_y, int focus_x, int focus_y, Window *w)
+{
+	if (w == nullptr) {
+		if (focus_x >= 0 && focus_y >= 0) {
+			w = FindWindowFromPt(focus_x, focus_y);
+		}
+		if (w == nullptr || w->viewport == nullptr) {
+			w = GetMainWindow();
+		}
+	}
+	if (w == nullptr || w->viewport == nullptr) return false;
+
+	w->viewport->CancelFollow(*w);
+
+	ViewportData &vp = *w->viewport;
+	/* Natural touch panning: dragging fingers right (delta_x > 0) pans map right (scrollpos decreases) */
+	vp.scrollpos_x -= ScaleByZoom(delta_x, vp.zoom);
+	vp.scrollpos_y -= ScaleByZoom(delta_y, vp.zoom);
+
+	ClampViewportToMap(vp, &vp.scrollpos_x, &vp.scrollpos_y);
+
+	vp.dest_scrollpos_x = vp.scrollpos_x;
+	vp.dest_scrollpos_y = vp.scrollpos_y;
+	vp.virtual_left = vp.scrollpos_x;
+	vp.virtual_top = vp.scrollpos_y;
+
+	SetViewportPosition(w, vp.scrollpos_x, vp.scrollpos_y);
+	w->SetDirty();
+	return true;
+}

@@ -187,6 +187,24 @@ public:
 	}
 
 	/**
+	 * Get the display DPI scale factor for this window (1.0 = 96 DPI).
+	 * @return The display scale factor (>= 1.0).
+	 */
+	virtual float GetDPIScale() const
+	{
+		return 1.0f;
+	}
+
+	/**
+	 * Get the safe-area insets (cutouts, system bars) in pixels.
+	 * @return Padding from each screen edge that may be obscured.
+	 */
+	virtual RectPadding GetSafeAreaInsets() const
+	{
+		return {};
+	}
+
+	/**
 	 * Queue a function to be called on the main thread with game state
 	 * lock held and video buffer locked. Queued functions will be
 	 * executed on the next draw tick.

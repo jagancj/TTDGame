@@ -6,3 +6,8 @@ docs/gamedocs/*
 docs/source/*
 /out
 /vcpkg_installed
+.gradle/
+**/build/
+android/.gradle/
+android/app/build/
+android/build/

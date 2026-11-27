@@ -45,6 +45,7 @@ void ShowHeightmapLoad();
 void ShowLandInfo(TileIndex tile);
 void ShowAboutWindow();
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
+void ShowConstructionConfirmOverlay(std::string caption, std::string message, std::function<void()> on_apply, std::function<void()> on_cancel = nullptr);
 
 /* tree_gui.cpp */
 void ShowBuildTreesToolbar();

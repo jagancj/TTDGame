@@ -1509,6 +1509,11 @@ void Window::InitializePositionSize(int x, int y, int sm_width, int sm_height)
 	this->height = sm_height;
 }
 
+static RectPadding GetSafeAreaInsets()
+{
+	return (VideoDriver::GetInstance() != nullptr) ? VideoDriver::GetInstance()->GetSafeAreaInsets() : RectPadding{};
+}
+
 /**
  * Resize window towards the default size.
  * Prior to construction, a position for the new window (for its default size)
@@ -1531,15 +1536,17 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 		 * one can use the same spec for multiple windows and those
 		 * can then determine the real minimum size of the window. */
 		if (this->width != def_width || this->height != def_height) {
-			/* Think about the overlapping toolbars when determining the minimum window size */
-			int free_height = _screen.height;
+			/* Think about the overlapping toolbars and safe-area insets when determining available size. */
+			RectPadding safe = GetSafeAreaInsets();
+			int free_width = std::max(0, _screen.width - safe.left - safe.right);
+			int free_height = std::max(0, _screen.height - safe.top - safe.bottom);
 			const Window *wt = FindWindowById(WindowClass::Statusbar, 0);
 			if (wt != nullptr) free_height -= wt->height;
 			wt = FindWindowById(WindowClass::MainToolbar, 0);
 			if (wt != nullptr) free_height -= wt->height;
 
-			int enlarge_x = std::max(std::min(def_width  - this->width,  _screen.width - this->width),  0);
-			int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
+			int enlarge_x = std::max(std::min(def_width  - this->width,  free_width  - this->width),  0);
+			int enlarge_y = std::max(std::min(def_height - this->height, free_height - this->height), 0);
 
 			/* X and Y has to go by step.. calculate it.
 			 * The cast to int is necessary else x/y are implicitly cast to
@@ -1555,14 +1562,39 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 		}
 	}
 
+	RectPadding safe = GetSafeAreaInsets();
 	int nx = this->left;
 	int ny = this->top;
 
-	if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
+#ifdef __ANDROID__
+	/* Hide legacy desktop construction/terraform toolbars offscreen; Compose HUD renders them. */
+	if (this->window_class == WindowClass::BuildToolbar || this->window_class == WindowClass::ScenarioGenerateLandscape) {
+		this->left = -10000;
+		this->top = -10000;
+		return;
+	}
+#endif
 
-	const Window *wt = FindWindowById(WindowClass::MainToolbar, 0);
-	ny = std::max(ny, (wt == nullptr || this == wt || this->top == 0) ? 0 : wt->height);
-	nx = std::max(nx, 0);
+	if (this->window_class != WindowClass::MainWindow) {
+		int max_right = _screen.width - safe.right;
+		if (nx + this->width > max_right) nx -= (nx + this->width - max_right);
+		nx = std::max<int>(nx, safe.left);
+
+		if (this->window_class == WindowClass::MainToolbar) {
+			ny = safe.top;
+		} else if (this->window_class == WindowClass::Statusbar) {
+			ny = _screen.height - safe.bottom - this->height;
+		} else {
+			int min_top = GetMainViewTop();
+			int max_bottom = GetMainViewBottom();
+			if (ny + this->height > max_bottom) ny = std::max(min_top, max_bottom - this->height);
+			ny = std::max(ny, min_top);
+		}
+	} else {
+		if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
+		ny = std::max(ny, 0);
+		nx = std::max(nx, 0);
+	}
 
 	if (this->viewport != nullptr) {
 		this->viewport->left += nx - this->left;
@@ -1732,7 +1764,12 @@ restart:
 Point GetToolbarAlignedWindowPosition(int window_width)
 {
 	const Window *w = FindWindowById(WindowClass::MainToolbar, 0);
-	assert(w != nullptr);
+	if (w == nullptr) {
+		RectPadding safe = GetSafeAreaInsets();
+		int top = safe.top + ScaleGUITrad(48);
+		int x = (_current_text_dir == TD_RTL) ? safe.left : std::max<int>(safe.left, _screen.width - safe.right - window_width);
+		return { x, top };
+	}
 	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
 	return pt;
 }
@@ -2186,7 +2223,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
 int GetMainViewTop()
 {
 	Window *w = FindWindowById(WindowClass::MainToolbar, 0);
-	return (w == nullptr) ? 0 : w->top + w->height;
+	return (w == nullptr) ? GetSafeAreaInsets().top : w->top + w->height;
 }
 
 /**
@@ -2197,7 +2234,7 @@ int GetMainViewTop()
 int GetMainViewBottom()
 {
 	Window *w = FindWindowById(WindowClass::Statusbar, 0);
-	return (w == nullptr) ? _screen.height : w->top;
+	return (w == nullptr) ? (_screen.height - GetSafeAreaInsets().bottom) : w->top;
 }
 
 static bool _dragging_window; ///< A window is being dragged or resized.
@@ -3530,11 +3567,19 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 	}
 	if (w == nullptr) return 0;
 
+	RectPadding safe = GetSafeAreaInsets();
 	int old_left = w->left;
+	int usable_width = std::max(0, _screen.width - safe.left - safe.right);
 	switch (setting) {
-		case 1:  w->left = (_screen.width - w->width) / 2; break;
-		case 2:  w->left = _screen.width - w->width; break;
-		default: w->left = 0; break;
+		case 1:  w->left = safe.left + (usable_width - w->width) / 2; break;
+		case 2:  w->left = _screen.width - safe.right - w->width; break;
+		default: w->left = safe.left; break;
+	}
+	w->left = Clamp(w->left, safe.left, std::max<int>(safe.left, _screen.width - safe.right - w->width));
+	if (clss == WindowClass::MainToolbar) {
+		w->top = safe.top;
+	} else if (clss == WindowClass::Statusbar) {
+		w->top = _screen.height - safe.bottom - w->height;
 	}
 	if (w->viewport != nullptr) w->viewport->left += w->left - old_left;
 	AddDirtyBlock(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
@@ -3611,15 +3656,18 @@ void RelocateAllWindows(int neww, int newh)
 {
 	CloseWindowByClass(WindowClass::DropdownMenu);
 
+	RectPadding safe = GetSafeAreaInsets();
+	int usable_w = std::max(0, neww - safe.left - safe.right);
+
 	/* Reposition toolbar then status bar before other all windows. */
 	if (Window *wt = FindWindowById(WindowClass::MainToolbar, 0); wt != nullptr) {
-		ResizeWindow(wt, std::min<uint>(neww, _toolbar_width) - wt->width, 0, false);
+		ResizeWindow(wt, std::min<uint>(usable_w, _toolbar_width) - wt->width, 0, false);
 		wt->left = PositionMainToolbar(wt);
 	}
 
 	if (Window *ws = FindWindowById(WindowClass::Statusbar, 0); ws != nullptr) {
-		ResizeWindow(ws, std::min<uint>(neww, _toolbar_width) - ws->width, 0, false);
-		ws->top = newh - ws->height;
+		ResizeWindow(ws, std::min<uint>(usable_w, _toolbar_width) - ws->width, 0, false);
+		ws->top = newh - safe.bottom - ws->height;
 		ws->left = PositionStatusbar(ws);
 	}
 
@@ -3644,12 +3692,14 @@ void RelocateAllWindows(int neww, int newh)
 				left = PositionNewsMessage(w);
 				break;
 
-			case WindowClass::NetworkChat:
+			case WindowClass::NetworkChat: {
 				ResizeWindow(w, std::min<uint>(neww, _toolbar_width) - w->width, 0, false);
 
-				top = newh - w->height - FindWindowById(WindowClass::Statusbar, 0)->height;
+				const Window *ws = FindWindowById(WindowClass::Statusbar, 0);
+				top = newh - w->height - (ws != nullptr ? ws->height : 0);
 				left = PositionNetworkChatWindow(w);
 				break;
+			}
 
 			case WindowClass::Console:
 				IConsoleResize(w);

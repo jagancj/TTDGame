@@ -153,6 +153,11 @@ void VideoDriver::Tick()
 				::UpdateWindows();
 			}
 
+#ifdef __ANDROID__
+			extern void AndroidUpdateHudSnapshot();
+			AndroidUpdateHudSnapshot();
+#endif
+
 			this->PopulateSystemSprites();
 		}
 

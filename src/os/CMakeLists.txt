@@ -1,3 +1,6 @@
 add_subdirectory(macosx)
 add_subdirectory(unix)
 add_subdirectory(windows)
+if(ANDROID)
+    add_subdirectory(android)
+endif()

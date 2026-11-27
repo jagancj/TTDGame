@@ -1,0 +1,84 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"create_regression"
+		],
+		"files" : 
+		[
+			"cmake/CreateRegression.cmake",
+			"regression/gs/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 1
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "openttd::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "regression_gs_files::@18ac987713b4fc4bbb87"
+		}
+	],
+	"id" : "regression_gs::@18ac987713b4fc4bbb87",
+	"name" : "regression_gs",
+	"paths" : 
+	{
+		"build" : "regression/gs",
+		"source" : "regression/gs"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/regression/gs/CMakeFiles/regression_gs",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "android/app/.cxx/Release/b422o2r6/arm64-v8a/regression/gs/CMakeFiles/regression_gs.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

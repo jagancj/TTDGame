@@ -10,6 +10,9 @@
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 
+#include <chrono>
+#include <cmath>
+#include <vector>
 #include "video_driver.hpp"
 
 /** The SDL video driver. */
@@ -48,12 +51,19 @@ public:
 
 	void SetScreensaverInhibited(bool inhibited) override;
 
+	float GetDPIScale() const override;
+
+	RectPadding GetSafeAreaInsets() const override { return this->safe_area_insets; }
+
 protected:
 	struct SDL_Window *sdl_window = nullptr; ///< Main SDL window.
 	Palette local_palette{}; ///< Current palette to use for drawing.
 	bool buffer_locked = false; ///< Video buffer was locked by the main thread.
 	Rect dirty_rect{}; ///< Rectangle encompassing the dirty area of the video buffer.
 	std::string driver_info{}; ///< Information string about selected driver.
+	RectPadding safe_area_insets{}; ///< Display safe-area insets in pixels.
+
+	void UpdateSafeAreaInsets();
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
@@ -107,6 +117,45 @@ private:
 	bool edit_box_focused = false;
 
 	int startup_display = 0; ///< The display to show OpenTTD on when starting.
+
+	/** Tracking state for touch input: direct tapping, two-finger panning, and pinch-to-zoom. */
+	struct TouchPoint {
+		int64_t id = 0;
+		int x = 0;
+		int y = 0;
+		int start_x = 0;
+		int start_y = 0;
+		std::chrono::steady_clock::time_point start_time{};
+	};
+
+	struct TouchState {
+		std::vector<TouchPoint> points;
+		bool is_dragging = false;       ///< Single finger left-drag active.
+		bool is_panning = false;        ///< Single finger viewport pan active.
+		bool is_list_scrolling = false; ///< Single finger touch-drag list scroll active.
+		bool is_multi_touch = false;    ///< Multi-touch (panning or pinching) active.
+		bool started_on_map = false;    ///< Touch started on MainWindow viewport.
+		bool started_on_scrollable = false; ///< Touch started on a scrollable non-scrollbar widget.
+		bool long_press_fired = false;  ///< Long-press right-click already triggered.
+		float last_pinch_distance = 0.0f;
+		float accumulated_pinch = 0.0f;
+		float accumulated_scroll_y = 0.0f;
+		int last_mid_x = 0;
+		int last_mid_y = 0;
+		int last_x = 0;
+		int last_y = 0;
+
+		TouchPoint *FindPoint(int64_t id) {
+			for (auto &pt : this->points) {
+				if (pt.id == id) return &pt;
+			}
+			return nullptr;
+		}
+
+		void RemovePoint(int64_t id) {
+			std::erase_if(this->points, [id](const TouchPoint &pt) { return pt.id == id; });
+		}
+	} touch_state{};
 };
 
 #endif /* VIDEO_SDL_H */

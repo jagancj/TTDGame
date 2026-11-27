@@ -1,0 +1,188 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"include"
+		],
+		"files" : 
+		[
+			"cmake/InstallAndPackage.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 503,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 49,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 59,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 96,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 102,
+				"parent" : 2
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"D:/Games/TTDGame/android/app/build/intermediates/cxx/Release/b422o2r6/obj/arm64-v8a/libopenttd.so"
+			],
+			"targetId" : "openttd::@6890427a1f51a3e7e1df",
+			"targetIndex" : 38,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "language_files",
+			"destination" : "share/games/openttd",
+			"paths" : 
+			[
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/lang",
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/baseset",
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/ai",
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/game",
+				"bin/scripts"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "docs",
+			"destination" : "share/doc/openttd",
+			"paths" : 
+			[
+				"COPYING.md",
+				"README.md",
+				"CREDITS.md",
+				"CONTRIBUTING.md",
+				"changelog.md",
+				"known-bugs.md"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "docs",
+			"destination" : "share/doc/openttd/docs",
+			"paths" : 
+			[
+				"docs/admin_network.md",
+				"docs/debugging_desyncs.md",
+				"docs/desync.md",
+				"docs/directory_structure.md",
+				"docs/eints.md",
+				"docs/fonts.md",
+				"docs/game_coordinator.md",
+				"docs/linkgraph.md",
+				"docs/logging_and_performance_metrics.md",
+				"docs/multiplayer.md",
+				"docs/savegame_format.md",
+				"docs/symbol_server.md",
+				"docs/obg_format.txt",
+				"docs/obm_format.txt",
+				"docs/obs_format.txt"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "manual",
+			"type" : "code"
+		},
+		{
+			"backtrace" : 8,
+			"component" : "manual",
+			"destination" : "share/man/man6",
+			"paths" : 
+			[
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/docs/openttd.6.gz"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 9,
+			"component" : "media",
+			"destination" : "share",
+			"paths" : 
+			[
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/media/icons",
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/media/pixmaps"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 10,
+			"component" : "menu",
+			"destination" : "share/applications",
+			"paths" : 
+			[
+				"android/app/.cxx/Release/b422o2r6/arm64-v8a/media/openttd.desktop"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

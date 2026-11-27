@@ -811,13 +811,38 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_PLACE_ROAD_Y_DIR:
 				case DDSP_PLACE_AUTOROAD: {
 					bool start_half = _place_road_dir == Axis::Y ? _place_road_start_half_y : _place_road_start_half_x;
+					bool remove = _remove_button_clicked;
+					RoadType roadtype = this->roadtype;
+					RoadType cur_roadtype = _cur_roadtype;
+					Axis road_dir = _place_road_dir;
+					bool one_way = _one_way_button_clicked;
+					bool end_half = _place_road_end_half;
 
-					if (_remove_button_clicked) {
-						Command<Commands::RemoveRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
-								end_tile, start_tile, _cur_roadtype, _place_road_dir, start_half, _place_road_end_half);
+					if (start_tile != end_tile) {
+						ShowConstructionConfirmOverlay(
+							remove ? "Confirm Remove Road" : "Confirm Build Road",
+							remove ? "Remove road along selected path?" : "Build road along selected path?",
+							[=]() {
+								if (remove) {
+									Command<Commands::RemoveRoadLong>::Post(GetRoadTypeInfo(roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
+											end_tile, start_tile, cur_roadtype, road_dir, start_half, end_half);
+								} else {
+									Command<Commands::BuildRoadLong>::Post(GetRoadTypeInfo(roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
+											end_tile, start_tile, cur_roadtype, road_dir, one_way ? DisallowedRoadDirection::Northbound : DisallowedRoadDirections{}, start_half, end_half, false);
+								}
+							},
+							[]() {
+								ResetObjectToPlace();
+							}
+						);
 					} else {
-						Command<Commands::BuildRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
-								end_tile, start_tile, _cur_roadtype, _place_road_dir, _one_way_button_clicked ? DisallowedRoadDirection::Northbound : DisallowedRoadDirections{}, start_half, _place_road_end_half, false);
+						if (remove) {
+							Command<Commands::RemoveRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
+									end_tile, start_tile, _cur_roadtype, _place_road_dir, start_half, _place_road_end_half);
+						} else {
+							Command<Commands::BuildRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
+									end_tile, start_tile, _cur_roadtype, _place_road_dir, _one_way_button_clicked ? DisallowedRoadDirection::Northbound : DisallowedRoadDirections{}, start_half, _place_road_end_half, false);
+						}
 					}
 					break;
 				}

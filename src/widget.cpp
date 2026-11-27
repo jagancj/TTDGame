@@ -745,6 +745,13 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
+#ifdef __ANDROID__
+	const PixelColour header_bg = company_owned
+		? GetColourGradient(_company_colours[owner], Shade::Normal)
+		: GetColourGradient(colour, Shade::Dark);
+	GfxFillRect(r, header_bg);
+	GfxFillRect(r.left, r.bottom, r.right, r.bottom, GetColourGradient(colour, Shade::Light));
+#else
 	DrawFrameRect(r, colour, FrameFlag::BorderOnly);
 	Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 	DrawFrameRect(ir, colour, company_owned ? FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened, FrameFlag::BorderOnly} : FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened});
@@ -752,6 +759,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 	if (company_owned) {
 		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], Shade::Normal));
 	}
+#endif
 
 	if (str.empty()) return;
 
@@ -1038,8 +1046,8 @@ void NWidgetResizeBase::AdjustPaddingForZoom()
 		this->min_x = ScaleGUITrad(this->uz_min_x);
 		this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
 		if (this->toolbar_size > 0) {
-			this->min_x = std::max(this->min_x, this->toolbar_size * _toolbar_image_size.width + WidgetDimensions::scaled.imgbtn.Horizontal());
-			this->min_y = std::max(this->min_y, _toolbar_image_size.height + WidgetDimensions::scaled.imgbtn.Vertical());
+			this->min_x = std::max({this->min_x, this->toolbar_size * _toolbar_image_size.width + WidgetDimensions::scaled.imgbtn.Horizontal(), (uint)ScaleGUITrad(28)});
+			this->min_y = std::max({this->min_y, _toolbar_image_size.height + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)ScaleGUITrad(28)});
 		}
 	}
 	NWidgetBase::AdjustPaddingForZoom();
@@ -2619,10 +2627,16 @@ void NWidgetScrollbar::SetupSmallestSize(Window *)
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
 			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
+#ifdef __ANDROID__
+			this->min_y = std::max<uint>(this->min_y, ScaleGUITrad(20));
+#endif
 			break;
 
 		case NWID_VSCROLLBAR:
 			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
+#ifdef __ANDROID__
+			this->min_x = std::max<uint>(this->min_x, ScaleGUITrad(20));
+#endif
 			break;
 
 		default: NOT_REACHED();
@@ -2998,6 +3012,36 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 		}
 		default:
 			NOT_REACHED();
+	}
+
+	/* Ensure a minimum interactive button size suitable for touchscreens and high-DPI displays */
+	switch (this->type) {
+		case WWT_PUSHBTN:
+		case WWT_IMGBTN:
+		case WWT_IMGBTN_2:
+		case WWT_PUSHIMGBTN:
+		case WWT_IMGTEXTBTN:
+		case WWT_PUSHIMGTEXTBTN:
+		case WWT_ARROWBTN:
+		case WWT_PUSHARROWBTN:
+		case WWT_CLOSEBOX:
+		case WWT_TEXTBTN:
+		case WWT_PUSHTXTBTN:
+		case WWT_TEXTBTN_2:
+			size.width = std::max(size.width, (uint)ScaleGUITrad(24));
+			size.height = std::max(size.height, (uint)ScaleGUITrad(22));
+			break;
+#ifdef __ANDROID__
+		case WWT_CAPTION:
+		case WWT_DROPDOWN:
+		case WWT_EDITBOX:
+		case WWT_RESIZEBOX:
+			size.height = std::max(size.height, (uint)ScaleGUITrad(22));
+			if (this->type == WWT_RESIZEBOX) size.width = std::max(size.width, (uint)ScaleGUITrad(22));
+			break;
+#endif
+		default:
+			break;
 	}
 
 	if (this->index >= 0) w->UpdateWidgetSize(this->index, size, padding, fill, resize);

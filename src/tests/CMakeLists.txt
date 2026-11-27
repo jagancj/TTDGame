@@ -1,3 +1,7 @@
+if(ANDROID OR NOT TARGET openttd_test)
+    return()
+endif()
+
 add_test_files(
     alternating_iterator.cpp
     bitmath_func.cpp

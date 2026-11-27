@@ -407,7 +407,18 @@ static void HandleAutodirPlacement()
 		return;
 	}
 
-	DoRailroadTrack(trackstat);
+	bool remove = _remove_button_clicked;
+
+	ShowConstructionConfirmOverlay(
+		remove ? "Confirm Remove Rail" : "Confirm Build Rail",
+		remove ? "Remove railroad track along selected path?" : "Build railroad track along selected path?",
+		[=]() {
+			DoRailroadTrack(trackstat);
+		},
+		[]() {
+			ResetObjectToPlace();
+		}
+	);
 }
 
 /**

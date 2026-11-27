@@ -19,6 +19,10 @@
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
+#include "../window_gui.h"
+#include "../tilehighlight_func.h"
+#include "../viewport_func.h"
+#include "../saveload/saveload_func.h"
 #include "sdl3_v.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_events.h>
@@ -198,6 +202,14 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 
 	flags |= SDL_WINDOW_RESIZABLE;
 
+#ifdef __ANDROID__
+	/* Keep mobile orientation locked to landscape, request high pixel density,
+	 * and disable SDL's synthetic mouse events for touch so we handle touch natively. */
+	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
+	SDL_SetHint(SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
+	flags |= SDL_WINDOW_FULLSCREEN | SDL_WINDOW_HIGH_PIXEL_DENSITY;
+#endif
+
 	if (_fullscreen) {
 		flags |= SDL_WINDOW_FULLSCREEN;
 	}
@@ -243,6 +255,7 @@ bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 
 	if (!this->CreateMainWindow(w, h)) return false;
 	if (resize) SDL_SetWindowSize(this->sdl_window, w, h);
+	this->UpdateSafeAreaInsets();
 	this->ClientSizeChanged(w, h, true);
 
 	/* When in full screen, we will always have the mouse cursor
@@ -455,6 +468,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 	switch (ev.type) {
 		case SDL_EVENT_MOUSE_MOTION: {
+			if (ev.motion.which == SDL_TOUCH_MOUSEID) break;
 			int32_t x = ev.motion.x;
 			int32_t y = ev.motion.y;
 
@@ -490,6 +504,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 		}
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
+			if (ev.button.which == SDL_TOUCH_MOUSEID) break;
 			if (_rightclick_emulate && SDL_GetModState() & SDL_KMOD_CTRL) {
 				ev.button.button = SDL_BUTTON_RIGHT;
 			}
@@ -525,6 +540,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
+			if (ev.button.which == SDL_TOUCH_MOUSEID) break;
 			if (_rightclick_emulate) {
 				_input_pressed.Reset({ControlInput::Left, ControlInput::Right});
 				_input_clicked.Reset(ControlInput::Left);
@@ -543,6 +559,224 @@ bool VideoDriver_SDL_Base::PollEvent()
 			HandleMouseEvents();
 			break;
 
+		case SDL_EVENT_FINGER_DOWN: {
+			int x = static_cast<int>(ev.tfinger.x * _screen.width);
+			int y = static_cast<int>(ev.tfinger.y * _screen.height);
+
+			TouchPoint pt;
+			pt.id = ev.tfinger.fingerID;
+			pt.x = x;
+			pt.y = y;
+			pt.start_x = x;
+			pt.start_y = y;
+			pt.start_time = std::chrono::steady_clock::now();
+			this->touch_state.points.push_back(pt);
+
+			if (this->touch_state.points.size() >= 2) {
+				/* Cancel active single-finger dragging/panning upon second finger touch. */
+				if (this->touch_state.is_dragging) {
+					_input_pressed.Reset({ControlInput::Left, ControlInput::Right});
+					_input_clicked.Reset({ControlInput::Left, ControlInput::Right});
+					HandleMouseEvents();
+					this->touch_state.is_dragging = false;
+				}
+				this->touch_state.is_panning = false;
+				this->touch_state.is_list_scrolling = false;
+				this->touch_state.is_multi_touch = true;
+
+				const auto &p0 = this->touch_state.points[0];
+				const auto &p1 = this->touch_state.points[1];
+				this->touch_state.last_mid_x = (p0.x + p1.x) / 2;
+				this->touch_state.last_mid_y = (p0.y + p1.y) / 2;
+				this->touch_state.last_pinch_distance = std::hypot(p0.x - p1.x, p0.y - p1.y);
+				this->touch_state.accumulated_pinch = 0.0f;
+			} else {
+				Window *w = FindWindowFromPt(x, y);
+				this->touch_state.started_on_map = (w != nullptr && w->window_class == WindowClass::MainWindow);
+				this->touch_state.started_on_scrollable = false;
+				if (w != nullptr && w->window_class != WindowClass::MainWindow && w->nested_root != nullptr) {
+					const NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x - w->left, y - w->top);
+					if (wid != nullptr && wid->GetScrollbarIndex() >= 0 &&
+							wid->type != WWT_CAPTION && wid->type != WWT_RESIZEBOX &&
+							wid->type != NWID_VSCROLLBAR && wid->type != NWID_HSCROLLBAR) {
+						this->touch_state.started_on_scrollable = true;
+					}
+				}
+				this->touch_state.is_dragging = false;
+				this->touch_state.is_panning = false;
+				this->touch_state.is_list_scrolling = false;
+				this->touch_state.is_multi_touch = false;
+				this->touch_state.long_press_fired = false;
+				this->touch_state.accumulated_scroll_y = 0.0f;
+				this->touch_state.last_x = x;
+				this->touch_state.last_y = y;
+			}
+			break;
+		}
+
+		case SDL_EVENT_FINGER_MOTION: {
+			int x = static_cast<int>(ev.tfinger.x * _screen.width);
+			int y = static_cast<int>(ev.tfinger.y * _screen.height);
+			float dpi_scale = this->GetDPIScale();
+
+			if (auto *pt = this->touch_state.FindPoint(ev.tfinger.fingerID)) {
+				pt->x = x;
+				pt->y = y;
+			}
+
+			if (this->touch_state.points.size() >= 2) {
+				const auto &p0 = this->touch_state.points[0];
+				const auto &p1 = this->touch_state.points[1];
+				int mid_x = (p0.x + p1.x) / 2;
+				int mid_y = (p0.y + p1.y) / 2;
+				int dx = mid_x - this->touch_state.last_mid_x;
+				int dy = mid_y - this->touch_state.last_mid_y;
+
+				/* Two-finger viewport panning wired directly into src/viewport.cpp */
+				if (std::hypot(dx, dy) >= 1.0f) {
+					ViewportPan(dx, dy, mid_x, mid_y);
+					this->touch_state.last_mid_x = mid_x;
+					this->touch_state.last_mid_y = mid_y;
+				}
+
+				/* Pinch-to-zoom wired directly into src/viewport.cpp */
+				float current_dist = std::hypot(p0.x - p1.x, p0.y - p1.y);
+				float pinch_delta = current_dist - this->touch_state.last_pinch_distance;
+				this->touch_state.accumulated_pinch += pinch_delta;
+				this->touch_state.last_pinch_distance = current_dist;
+
+				float pinch_threshold = 35.0f * dpi_scale;
+				if (std::abs(this->touch_state.accumulated_pinch) >= pinch_threshold) {
+					bool zoom_in = (this->touch_state.accumulated_pinch > 0.0f);
+					ViewportPinchZoom(zoom_in, mid_x, mid_y);
+					this->touch_state.accumulated_pinch = 0.0f;
+				}
+			} else if (this->touch_state.points.size() == 1 && !this->touch_state.is_multi_touch && !this->touch_state.long_press_fired) {
+				const auto &pt = this->touch_state.points[0];
+				float dist = std::hypot(x - pt.start_x, y - pt.start_y);
+				float drag_threshold = 12.0f * dpi_scale;
+
+				auto get_effective_y = [&](int raw_y) {
+					if (this->touch_state.started_on_map && _thd.place_mode != HT_NONE) {
+						return std::max(0, raw_y - static_cast<int>(40.0f * dpi_scale));
+					}
+					return raw_y;
+				};
+
+				if (!this->touch_state.is_dragging && !this->touch_state.is_panning && !this->touch_state.is_list_scrolling && dist > drag_threshold) {
+					if (this->touch_state.started_on_map && _thd.place_mode == HT_NONE) {
+						/* One-finger map panning when browsing the map. */
+						this->touch_state.is_panning = true;
+						ViewportPan(x - pt.start_x, y - pt.start_y, x, y);
+					} else if (this->touch_state.started_on_scrollable && std::abs(y - pt.start_y) > std::abs(x - pt.start_x)) {
+						/* Touch-drag list scrolling. */
+						this->touch_state.is_list_scrolling = true;
+						this->touch_state.accumulated_scroll_y = static_cast<float>(y - pt.start_y);
+					} else {
+						/* Left-button drag (build tool placement, scrollbar, or window drag). */
+						this->touch_state.is_dragging = true;
+						int start_eff_y = get_effective_y(pt.start_y);
+						_cursor.UpdateCursorPosition(pt.start_x, start_eff_y);
+						_input_clicked.Reset(ControlInput::Left);
+						_input_pressed.Set(ControlInput::Left);
+						HandleMouseEvents();
+						int eff_y = get_effective_y(y);
+						_cursor.UpdateCursorPosition(x, eff_y);
+						HandleMouseEvents();
+					}
+				} else if (this->touch_state.is_panning) {
+					int dx = x - this->touch_state.last_x;
+					int dy = y - this->touch_state.last_y;
+					if (dx != 0 || dy != 0) {
+						ViewportPan(dx, dy, x, y);
+					}
+				} else if (this->touch_state.is_list_scrolling) {
+					this->touch_state.accumulated_scroll_y += static_cast<float>(y - this->touch_state.last_y);
+					float scroll_step = 20.0f * dpi_scale;
+					int wheel_steps = 0;
+					while (this->touch_state.accumulated_scroll_y >= scroll_step) {
+						wheel_steps--;
+						this->touch_state.accumulated_scroll_y -= scroll_step;
+					}
+					while (this->touch_state.accumulated_scroll_y <= -scroll_step) {
+						wheel_steps++;
+						this->touch_state.accumulated_scroll_y += scroll_step;
+					}
+					if (wheel_steps != 0) {
+						_cursor.UpdateCursorPosition(pt.start_x, pt.start_y);
+						_cursor.wheel += wheel_steps;
+						HandleMouseEvents();
+					}
+				} else if (this->touch_state.is_dragging) {
+					int eff_y = get_effective_y(y);
+					if (_cursor.UpdateCursorPosition(x, eff_y)) {
+						SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
+					}
+					HandleMouseEvents();
+				}
+				this->touch_state.last_x = x;
+				this->touch_state.last_y = y;
+			}
+			break;
+		}
+
+		case SDL_EVENT_FINGER_UP:
+		case SDL_EVENT_FINGER_CANCELED: {
+			auto *pt = this->touch_state.FindPoint(ev.tfinger.fingerID);
+			if (pt != nullptr) {
+				if (!this->touch_state.is_multi_touch && !this->touch_state.is_dragging && !this->touch_state.is_panning &&
+						!this->touch_state.is_list_scrolling && !this->touch_state.long_press_fired && this->touch_state.points.size() == 1) {
+					/* Short tap: direct Left Click at exact touch coordinate. */
+					_cursor.UpdateCursorPosition(pt->start_x, pt->start_y);
+					_input_clicked.Reset(ControlInput::Left);
+					_input_pressed.Set(ControlInput::Left);
+					HandleMouseEvents();
+					_input_pressed.Reset(ControlInput::Left);
+					_input_clicked.Reset(ControlInput::Left);
+					HandleMouseEvents();
+				} else if (this->touch_state.is_dragging) {
+					_input_pressed.Reset(ControlInput::Left);
+					_input_clicked.Reset(ControlInput::Left);
+					HandleMouseEvents();
+					this->touch_state.is_dragging = false;
+				}
+				this->touch_state.RemovePoint(ev.tfinger.fingerID);
+			}
+
+			if (this->touch_state.points.empty()) {
+				this->touch_state.is_multi_touch = false;
+				this->touch_state.is_dragging = false;
+				this->touch_state.is_panning = false;
+				this->touch_state.is_list_scrolling = false;
+				this->touch_state.long_press_fired = false;
+				this->touch_state.accumulated_pinch = 0.0f;
+				this->touch_state.accumulated_scroll_y = 0.0f;
+			}
+			break;
+		}
+
+#ifdef SDL_EVENT_DID_ENTER_BACKGROUND
+		case SDL_EVENT_DID_ENTER_BACKGROUND:
+			_input_pressed.Reset({ControlInput::Left, ControlInput::Right, ControlInput::Middle});
+			_input_clicked.Reset({ControlInput::Left, ControlInput::Right, ControlInput::Middle});
+			this->touch_state = {};
+			HandleMouseEvents();
+			if (_game_mode != GameMode::Menu) {
+				_pause_mode |= PauseMode::Normal;
+			}
+#ifdef __ANDROID__
+			if (_game_mode == GameMode::Normal) {
+				DoExitSave();
+			}
+#endif
+			break;
+
+		case SDL_EVENT_WILL_ENTER_FOREGROUND:
+			_pause_mode.Reset(PauseMode::Normal);
+			this->MakeDirty(0, 0, _screen.width, _screen.height);
+			break;
+#endif
+
 		case SDL_EVENT_QUIT:
 			HandleExitGameRequest();
 			break;
@@ -558,6 +792,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 				/* Only handle non-text keys here. Text is handled in
 				 * SDL_EVENT_TEXT_INPUT below. */
 				if (!this->edit_box_focused ||
+					keycode == WKC_BACKSPACE ||
 					keycode == WKC_DELETE ||
 					keycode == WKC_NUM_ENTER ||
 					keycode == WKC_LEFT ||
@@ -599,9 +834,19 @@ bool VideoDriver_SDL_Base::PollEvent()
 		case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED: {
 			int w = std::max(ev.window.data1, 64);
 			int h = std::max(ev.window.data2, 64);
+			this->UpdateSafeAreaInsets();
 			CreateMainSurface(w, h, w != ev.window.data1 || h != ev.window.data2);
 			break;
 		}
+
+		case SDL_EVENT_WINDOW_DISPLAY_SCALE_CHANGED:
+			if (AdjustGUIZoom(true)) ReInitAllWindows(true);
+			break;
+
+		case SDL_EVENT_WINDOW_SAFE_AREA_CHANGED:
+			this->UpdateSafeAreaInsets();
+			ReInitAllWindows(false);
+			break;
 
 		case SDL_EVENT_WINDOW_MOUSE_ENTER:
 			/* mouse entered the window, enable cursor */
@@ -672,6 +917,14 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 
 	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
 
+#ifdef __ANDROID__
+	if (const SDL_DisplayMode *mode = SDL_GetCurrentDisplayMode(SDL_GetPrimaryDisplay()); mode != nullptr && mode->w > 0 && mode->h > 0) {
+		_cur_resolution.width = std::max(mode->w, mode->h);
+		_cur_resolution.height = std::min(mode->w, mode->h);
+		_fullscreen = true;
+	}
+#endif
+
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
 	}
@@ -727,6 +980,24 @@ void VideoDriver_SDL_Base::InputLoop()
 	_dirkeys.Set(DirectionKey::Down, key_states[SDL_SCANCODE_DOWN]);
 
 	if (old_ctrl_pressed != IsCtrlPressed()) HandleCtrlChanged();
+
+	/* Trigger immediate long-press right-click (tooltips, query, cancel) when holding still. */
+	if (this->touch_state.points.size() == 1 && !this->touch_state.is_multi_touch &&
+			!this->touch_state.is_dragging && !this->touch_state.is_panning &&
+			!this->touch_state.is_list_scrolling && !this->touch_state.long_press_fired) {
+		const auto &pt = this->touch_state.points[0];
+		auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+			std::chrono::steady_clock::now() - pt.start_time).count();
+		if (elapsed_ms >= 450) {
+			this->touch_state.long_press_fired = true;
+			_cursor.UpdateCursorPosition(pt.start_x, pt.start_y);
+			_input_pressed.Set(ControlInput::Right);
+			_input_clicked.Set(ControlInput::Right);
+			HandleMouseEvents();
+			_input_pressed.Reset(ControlInput::Right);
+			HandleMouseEvents();
+		}
+	}
 }
 
 /** Run a single tick of the game/main loop. */
@@ -861,5 +1132,25 @@ void VideoDriver_SDL_Base::SetScreensaverInhibited(bool inhibited)
 		SDL_DisableScreenSaver();
 	} else {
 		SDL_EnableScreenSaver();
+	}
+}
+
+float VideoDriver_SDL_Base::GetDPIScale() const
+{
+	if (this->sdl_window == nullptr) return 1.0f;
+	float scale = SDL_GetWindowDisplayScale(this->sdl_window);
+	return scale > 0.0f ? scale : 1.0f;
+}
+
+void VideoDriver_SDL_Base::UpdateSafeAreaInsets()
+{
+	if (this->sdl_window == nullptr) return;
+	SDL_Rect safe{};
+	int w = 0, h = 0;
+	if (SDL_GetWindowSafeArea(this->sdl_window, &safe) && SDL_GetWindowSizeInPixels(this->sdl_window, &w, &h) && w > 0 && h > 0) {
+		this->safe_area_insets.left = static_cast<uint8_t>(Clamp(safe.x, 0, 255));
+		this->safe_area_insets.top = static_cast<uint8_t>(Clamp(safe.y, 0, 255));
+		this->safe_area_insets.right = static_cast<uint8_t>(Clamp(w - (safe.x + safe.w), 0, 255));
+		this->safe_area_insets.bottom = static_cast<uint8_t>(Clamp(h - (safe.y + safe.h), 0, 255));
 	}
 }

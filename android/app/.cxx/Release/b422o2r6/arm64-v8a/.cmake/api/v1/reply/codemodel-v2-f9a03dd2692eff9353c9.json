@@ -1,0 +1,1477 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						5,
+						53,
+						57
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-b3bf722471154ad72224.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						34,
+						38,
+						39,
+						58
+					]
+				},
+				{
+					"build" : "SDL3_build",
+					"jsonFile" : "directory-SDL3_build-Release-e7ad18e56756c66f66a7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "android/SDL3",
+					"targetIndexes" : 
+					[
+						28,
+						29,
+						30
+					]
+				},
+				{
+					"build" : "bin",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"jsonFile" : "directory-bin-Release-3d84778fa4221ebd449e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "bin"
+				},
+				{
+					"build" : "bin/ai",
+					"jsonFile" : "directory-bin.ai-Release-06ce4d1b1b905d3e8b9b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "bin/ai",
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"build" : "bin/game",
+					"jsonFile" : "directory-bin.game-Release-49ecda81cd46dba1abc6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "bin/game",
+					"targetIndexes" : 
+					[
+						35
+					]
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						6,
+						8,
+						9,
+						10,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						35,
+						36,
+						41,
+						43,
+						45,
+						46,
+						47,
+						49,
+						50,
+						52
+					],
+					"jsonFile" : "directory-src-Release-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/script",
+					"childIndexes" : 
+					[
+						7
+					],
+					"jsonFile" : "directory-src.script-Release-2232dc512a8142e37990.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/script"
+				},
+				{
+					"build" : "src/script/api",
+					"jsonFile" : "directory-src.script.api-Release-4775f59d5be7bede3835.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 0,
+					"source" : "src/script/api",
+					"targetIndexes" : 
+					[
+						50,
+						51,
+						52,
+						53,
+						54,
+						55
+					]
+				},
+				{
+					"build" : "src/settingsgen",
+					"jsonFile" : "directory-src.settingsgen-Release-c3f5eb87159ae425563c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/settingsgen"
+				},
+				{
+					"build" : "src/strgen",
+					"jsonFile" : "directory-src.strgen-Release-137ffac6c26f52c9b1af.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/strgen"
+				},
+				{
+					"build" : "src/3rdparty",
+					"childIndexes" : 
+					[
+						11,
+						12,
+						13,
+						15,
+						16,
+						17,
+						21,
+						22,
+						23
+					],
+					"jsonFile" : "directory-src.3rdparty-Release-b24971911502abaa9d6c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty"
+				},
+				{
+					"build" : "src/3rdparty/catch2",
+					"jsonFile" : "directory-src.3rdparty.catch2-Release-a17a2a6ed81e8adb70db.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/catch2"
+				},
+				{
+					"build" : "src/3rdparty/fmt",
+					"jsonFile" : "directory-src.3rdparty.fmt-Release-358ed1ae6eee9a5ab59a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/fmt"
+				},
+				{
+					"build" : "src/3rdparty/icu",
+					"childIndexes" : 
+					[
+						14
+					],
+					"jsonFile" : "directory-src.3rdparty.icu-Release-5074d25b5d200e42381d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/icu"
+				},
+				{
+					"build" : "src/3rdparty/icu/tests",
+					"jsonFile" : "directory-src.3rdparty.icu.tests-Release-8e4eb1cf9d3f2850ad69.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 13,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/icu/tests"
+				},
+				{
+					"build" : "src/3rdparty/md5",
+					"jsonFile" : "directory-src.3rdparty.md5-Release-b0999014b98af763ee21.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/md5"
+				},
+				{
+					"build" : "src/3rdparty/monocypher",
+					"jsonFile" : "directory-src.3rdparty.monocypher-Release-1d1d47db928e7c1cb43d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/monocypher"
+				},
+				{
+					"build" : "src/3rdparty/squirrel",
+					"childIndexes" : 
+					[
+						18,
+						19,
+						20
+					],
+					"jsonFile" : "directory-src.3rdparty.squirrel-Release-89feed09eb83aca9e080.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/squirrel"
+				},
+				{
+					"build" : "src/3rdparty/squirrel/include",
+					"jsonFile" : "directory-src.3rdparty.squirrel.include-Release-2f12d5bfcd6ef99bb6b2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/squirrel/include"
+				},
+				{
+					"build" : "src/3rdparty/squirrel/sqstdlib",
+					"jsonFile" : "directory-src.3rdparty.squirrel.sqstdlib-Release-2f5169f88601b04f66f6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/squirrel/sqstdlib"
+				},
+				{
+					"build" : "src/3rdparty/squirrel/squirrel",
+					"jsonFile" : "directory-src.3rdparty.squirrel.squirrel-Release-e5a1221797b2805ff4cf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/squirrel/squirrel"
+				},
+				{
+					"build" : "src/3rdparty/nlohmann",
+					"jsonFile" : "directory-src.3rdparty.nlohmann-Release-04b0866518321c75ec6c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/nlohmann"
+				},
+				{
+					"build" : "src/3rdparty/opengl",
+					"jsonFile" : "directory-src.3rdparty.opengl-Release-99c10c1b32d411db4489.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/opengl"
+				},
+				{
+					"build" : "src/3rdparty/openttd_social_integration_api",
+					"jsonFile" : "directory-src.3rdparty.openttd_social_integration_api-Release-416810cd558c70e2f1b2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 0,
+					"source" : "src/3rdparty/openttd_social_integration_api"
+				},
+				{
+					"build" : "src/ai",
+					"jsonFile" : "directory-src.ai-Release-ac08f06b93e957a5a5cb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/ai"
+				},
+				{
+					"build" : "src/blitter",
+					"jsonFile" : "directory-src.blitter-Release-38be0a07d6c5c2e99e44.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/blitter"
+				},
+				{
+					"build" : "src/core",
+					"jsonFile" : "directory-src.core-Release-27980f60b5df84566cd6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/core"
+				},
+				{
+					"build" : "src/fontcache",
+					"jsonFile" : "directory-src.fontcache-Release-6274254b1f0a4ae7119a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/fontcache"
+				},
+				{
+					"build" : "src/game",
+					"jsonFile" : "directory-src.game-Release-ed37d73a2506dd2b1df8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/game"
+				},
+				{
+					"build" : "src/lang",
+					"jsonFile" : "directory-src.lang-Release-41bcf8b81a681a590ee6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/lang",
+					"targetIndexes" : 
+					[
+						36,
+						57
+					]
+				},
+				{
+					"build" : "src/linkgraph",
+					"jsonFile" : "directory-src.linkgraph-Release-b161fdeac610e4867737.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/linkgraph"
+				},
+				{
+					"build" : "src/misc",
+					"jsonFile" : "directory-src.misc-Release-5e48d1d2ff620004eba0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/misc"
+				},
+				{
+					"build" : "src/music",
+					"jsonFile" : "directory-src.music-Release-66f7aa41307ae8859e7d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/music"
+				},
+				{
+					"build" : "src/network",
+					"childIndexes" : 
+					[
+						34
+					],
+					"jsonFile" : "directory-src.network-Release-3e33f20a4c8141e0054b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/network"
+				},
+				{
+					"build" : "src/network/core",
+					"jsonFile" : "directory-src.network.core-Release-1920061fc8b057c4a668.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 33,
+					"projectIndex" : 0,
+					"source" : "src/network/core"
+				},
+				{
+					"build" : "src/newgrf",
+					"jsonFile" : "directory-src.newgrf-Release-6a3de371245e895d9f01.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/newgrf"
+				},
+				{
+					"build" : "src/os",
+					"childIndexes" : 
+					[
+						37,
+						38,
+						39,
+						40
+					],
+					"jsonFile" : "directory-src.os-Release-1c10d1ba77f48cd7de37.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/os"
+				},
+				{
+					"build" : "src/os/macosx",
+					"jsonFile" : "directory-src.os.macosx-Release-8ad88ef770770e288984.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 36,
+					"projectIndex" : 0,
+					"source" : "src/os/macosx"
+				},
+				{
+					"build" : "src/os/unix",
+					"jsonFile" : "directory-src.os.unix-Release-8cd0ef80b1e5f2c681c0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 36,
+					"projectIndex" : 0,
+					"source" : "src/os/unix"
+				},
+				{
+					"build" : "src/os/windows",
+					"jsonFile" : "directory-src.os.windows-Release-2beca170dcdc6e9fc32b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 36,
+					"projectIndex" : 0,
+					"source" : "src/os/windows"
+				},
+				{
+					"build" : "src/os/android",
+					"jsonFile" : "directory-src.os.android-Release-287ad49a65d815216a3a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 36,
+					"projectIndex" : 0,
+					"source" : "src/os/android"
+				},
+				{
+					"build" : "src/pathfinder",
+					"childIndexes" : 
+					[
+						42
+					],
+					"jsonFile" : "directory-src.pathfinder-Release-f7ee5cceda4b9f8f504b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/pathfinder"
+				},
+				{
+					"build" : "src/pathfinder/yapf",
+					"jsonFile" : "directory-src.pathfinder.yapf-Release-a7f65e8bbe2b47f14a4e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 41,
+					"projectIndex" : 0,
+					"source" : "src/pathfinder/yapf"
+				},
+				{
+					"build" : "src/saveload",
+					"childIndexes" : 
+					[
+						44
+					],
+					"jsonFile" : "directory-src.saveload-Release-bf0fdc9a5408ca9c429c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/saveload"
+				},
+				{
+					"build" : "src/saveload/compat",
+					"jsonFile" : "directory-src.saveload.compat-Release-6b50c7c256db67f2c5e8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 43,
+					"projectIndex" : 0,
+					"source" : "src/saveload/compat"
+				},
+				{
+					"build" : "src/sound",
+					"jsonFile" : "directory-src.sound-Release-8aff15d20c2e2713e33e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/sound"
+				},
+				{
+					"build" : "src/spriteloader",
+					"jsonFile" : "directory-src.spriteloader-Release-1edabc94029c1b29d25f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/spriteloader"
+				},
+				{
+					"build" : "src/table",
+					"childIndexes" : 
+					[
+						48
+					],
+					"jsonFile" : "directory-src.table-Release-1edd76e1935f64d0b68c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/table"
+				},
+				{
+					"build" : "src/table/settings",
+					"jsonFile" : "directory-src.table.settings-Release-eef87d56b4e26625e24d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 47,
+					"projectIndex" : 0,
+					"source" : "src/table/settings",
+					"targetIndexes" : 
+					[
+						56
+					]
+				},
+				{
+					"build" : "src/timer",
+					"jsonFile" : "directory-src.timer-Release-fbb7bc87b90e6e86e321.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/timer"
+				},
+				{
+					"build" : "src/video",
+					"childIndexes" : 
+					[
+						51
+					],
+					"jsonFile" : "directory-src.video-Release-35d44208b1be29570494.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/video"
+				},
+				{
+					"build" : "src/video/cocoa",
+					"jsonFile" : "directory-src.video.cocoa-Release-78e4f5f04029361dffaa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 50,
+					"projectIndex" : 0,
+					"source" : "src/video/cocoa"
+				},
+				{
+					"build" : "src/widgets",
+					"jsonFile" : "directory-src.widgets-Release-91109493778654d6af50.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 0,
+					"source" : "src/widgets"
+				},
+				{
+					"build" : "media",
+					"childIndexes" : 
+					[
+						54
+					],
+					"jsonFile" : "directory-media-Release-da74af95760eeaf392eb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "media",
+					"targetIndexes" : 
+					[
+						33,
+						37
+					]
+				},
+				{
+					"build" : "media/baseset",
+					"childIndexes" : 
+					[
+						55,
+						56
+					],
+					"jsonFile" : "directory-media.baseset-Release-a0958573d2b71cdf8da2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 53,
+					"projectIndex" : 0,
+					"source" : "media/baseset",
+					"targetIndexes" : 
+					[
+						32
+					]
+				},
+				{
+					"build" : "media/baseset/openttd",
+					"jsonFile" : "directory-media.baseset.openttd-Release-999cd111580c237ebc98.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 54,
+					"projectIndex" : 0,
+					"source" : "media/baseset/openttd"
+				},
+				{
+					"build" : "media/baseset/orig_extra",
+					"jsonFile" : "directory-media.baseset.orig_extra-Release-0d621b4c10fd382b8ef6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 54,
+					"projectIndex" : 0,
+					"source" : "media/baseset/orig_extra"
+				},
+				{
+					"build" : "regression",
+					"childIndexes" : 
+					[
+						58,
+						59,
+						60,
+						61
+					],
+					"jsonFile" : "directory-regression-Release-a731285b1287be749f81.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "regression",
+					"targetIndexes" : 
+					[
+						40,
+						41
+					]
+				},
+				{
+					"build" : "regression/regression",
+					"jsonFile" : "directory-regression.regression-Release-fe9a7458fe3a7cbe6990.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 57,
+					"projectIndex" : 0,
+					"source" : "regression/regression",
+					"targetIndexes" : 
+					[
+						46,
+						47
+					]
+				},
+				{
+					"build" : "regression/stationlist",
+					"jsonFile" : "directory-regression.stationlist-Release-9f506f724507b5c1c3de.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 57,
+					"projectIndex" : 0,
+					"source" : "regression/stationlist",
+					"targetIndexes" : 
+					[
+						48,
+						49
+					]
+				},
+				{
+					"build" : "regression/gs",
+					"jsonFile" : "directory-regression.gs-Release-d94ea37b330ac4176c89.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 57,
+					"projectIndex" : 0,
+					"source" : "regression/gs",
+					"targetIndexes" : 
+					[
+						42,
+						45
+					]
+				},
+				{
+					"build" : "regression/gs_compat",
+					"jsonFile" : "directory-regression.gs_compat-Release-8ab0ffbecdf8b5473ea1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 57,
+					"projectIndex" : 0,
+					"source" : "regression/gs_compat",
+					"targetIndexes" : 
+					[
+						43,
+						44
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48,
+						49,
+						50,
+						51,
+						52,
+						53,
+						54,
+						55,
+						56,
+						57,
+						58,
+						59,
+						60,
+						61
+					],
+					"name" : "openttd",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48,
+						49,
+						50,
+						51,
+						52,
+						53,
+						54,
+						55,
+						56,
+						57,
+						58
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "SDL3",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						28,
+						29,
+						30
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-Release-24c91b06276f335ce624.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousBuild-Release-7a29579594278352688c.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousConfigure-Release-255e5fdd7570a622d670.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousCoverage-Release-0ecd5381295def7664c8.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousMemCheck-Release-2bcb99640a88a2455ca8.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousStart-Release-95217fa669865ddc60c8.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousSubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousSubmit-Release-af88ebb209f370f26b85.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousTest-Release-37b095845f875a9a4324.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousUpdate-Release-4d6a48574f42c2a33a95.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-Release-7e7113febea20395dc25.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalBuild-Release-47076983ddd5cbdd3c0e.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalConfigure-Release-599941a7c9b4afcf0650.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalCoverage-Release-e857468af3daffa6ea23.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalMemCheck-Release-036e7e64b1603067009c.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalStart-Release-b3b0f210aa5bb10b41c7.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalSubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalSubmit-Release-d2b146e0114fdf5f2fe6.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalTest-Release-210944eae87f7fb2411c.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalUpdate-Release-c1d848330fea208ed857.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-Release-7cadd2323692a02bd5f5.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyBuild-Release-81424a86f6c7589ed77a.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyConfigure-Release-ac5ff2259b4dacadbff2.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyCoverage-Release-49dc0436e5d4775a776a.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemCheck-Release-17bace5369661ddd1f40.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-Release-c8547014864ec83821d0.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyStart-Release-2aa87fb726b66b62cf24.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlySubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlySubmit-Release-39a392a6d7ee8763334a.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyTest-Release-64518772bf6c153a10ed.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyUpdate-Release-ff023e4876f66f1ea168.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL3-shared::@70d451f5601920adaf33",
+					"jsonFile" : "target-SDL3-shared-Release-a7b2c280fd4944baec10.json",
+					"name" : "SDL3-shared",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL3_test::@70d451f5601920adaf33",
+					"jsonFile" : "target-SDL3_test-Release-a50ccc64d3731b2817c6.json",
+					"name" : "SDL3_test",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL_uclibc::@70d451f5601920adaf33",
+					"jsonFile" : "target-SDL_uclibc-Release-623d1553c6501a69bde3.json",
+					"name" : "SDL_uclibc",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ai_compat_files::@64d2c50672dd04b101f8",
+					"jsonFile" : "target-ai_compat_files-Release-0217038948293e11c86a.json",
+					"name" : "ai_compat_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 54,
+					"id" : "baseset_files::@5ec75d7bc64d5d2ad699",
+					"jsonFile" : "target-baseset_files-Release-0510b8de5fd4c3a118a2.json",
+					"name" : "baseset_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 53,
+					"id" : "desktop_file::@932148c3ebadde60b91d",
+					"jsonFile" : "target-desktop_file-Release-dd746fac4c0876fdb94b.json",
+					"name" : "desktop_file",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "find_version::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-find_version-Release-306af2be781b296a8197.json",
+					"name" : "find_version",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "gs_compat_files::@48720974bafa1c992af8",
+					"jsonFile" : "target-gs_compat_files-Release-62cbb8527d875a4147d0.json",
+					"name" : "gs_compat_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 29,
+					"id" : "language_files::@9e527a14cb585be0cbd9",
+					"jsonFile" : "target-language_files-Release-e4df9ec805f2102f906a.json",
+					"name" : "language_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 53,
+					"id" : "media_files::@932148c3ebadde60b91d",
+					"jsonFile" : "target-media_files-Release-26826b055479050f8bdd.json",
+					"name" : "media_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "openttd::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-openttd-Release-8445cce8f4c91a2e26b0.json",
+					"name" : "openttd",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "openttd_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-openttd_lib-Release-72a86f64c65a8028a3f2.json",
+					"name" : "openttd_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 57,
+					"id" : "regression::@0f5cd0f11dcecd4fc183",
+					"jsonFile" : "target-regression-Release-758f2cca3a9461431489.json",
+					"name" : "regression",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 57,
+					"id" : "regression_files::@0f5cd0f11dcecd4fc183",
+					"jsonFile" : "target-regression_files-Release-c6fcdb470d4fb0a2ef91.json",
+					"name" : "regression_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 60,
+					"id" : "regression_gs::@18ac987713b4fc4bbb87",
+					"jsonFile" : "target-regression_gs-Release-b6d96107e31fef471c24.json",
+					"name" : "regression_gs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 61,
+					"id" : "regression_gs_compat::@1b2ccf37f6453c84698c",
+					"jsonFile" : "target-regression_gs_compat-Release-3faec00508a9174e289d.json",
+					"name" : "regression_gs_compat",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 61,
+					"id" : "regression_gs_compat_files::@1b2ccf37f6453c84698c",
+					"jsonFile" : "target-regression_gs_compat_files-Release-3e37ebd54024538715cf.json",
+					"name" : "regression_gs_compat_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 60,
+					"id" : "regression_gs_files::@18ac987713b4fc4bbb87",
+					"jsonFile" : "target-regression_gs_files-Release-49fb7b98ae56b4e8fc4c.json",
+					"name" : "regression_gs_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 58,
+					"id" : "regression_regression::@c69eb560c26cc72351c6",
+					"jsonFile" : "target-regression_regression-Release-a76b8a28c0013d7bacb2.json",
+					"name" : "regression_regression",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 58,
+					"id" : "regression_regression_files::@c69eb560c26cc72351c6",
+					"jsonFile" : "target-regression_regression_files-Release-64946fe2bd5ab7abab27.json",
+					"name" : "regression_regression_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 59,
+					"id" : "regression_stationlist::@4167a79f2cba139ed1a3",
+					"jsonFile" : "target-regression_stationlist-Release-d8360832a5b2d5454a5d.json",
+					"name" : "regression_stationlist",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 59,
+					"id" : "regression_stationlist_files::@4167a79f2cba139ed1a3",
+					"jsonFile" : "target-regression_stationlist_files-Release-a5fdcb57bded7e698399.json",
+					"name" : "regression_stationlist_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_ai::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_ai-Release-5a741d17996245e06e7c.json",
+					"name" : "script_ai",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_ai_includes::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_ai_includes-Release-b74c9bfe2ce2fd40dee4.json",
+					"name" : "script_ai_includes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_game::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_game-Release-33a4075941e493b2ae32.json",
+					"name" : "script_game",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_game_includes::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_game_includes-Release-618f5afe29aa94e8019e.json",
+					"name" : "script_game_includes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_template::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_template-Release-80f36089120b094610ca.json",
+					"name" : "script_template",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "script_window::@7c48e8bba4557c3c1dec",
+					"jsonFile" : "target-script_window-Release-3197514ddb5ccb5a3157.json",
+					"name" : "script_window",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 48,
+					"id" : "table_settings::@31b6bf0da3baabed56b6",
+					"jsonFile" : "target-table_settings-Release-4fd52fa07fda33d3c5fa.json",
+					"name" : "table_settings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 29,
+					"id" : "table_strings::@9e527a14cb585be0cbd9",
+					"jsonFile" : "target-table_strings-Release-df99ecf081a6aa9ba1eb.json",
+					"name" : "table_strings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tools::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tools-Release-378867b34d2dfa76e97d.json",
+					"name" : "tools",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Games/TTDGame/android/app/.cxx/Release/b422o2r6/arm64-v8a",
+		"source" : "D:/Games/TTDGame"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

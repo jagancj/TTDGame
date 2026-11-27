@@ -42,6 +42,7 @@ enum class QueryStringWindowNumber : uint8_t {
 enum class ConfirmPopupQueryWindowNumber : uint8_t {
 	Default, ///< Query popup confirm.
 	Bootstrap, ///< Query popup confirm for bootstrap.
+	Construction, ///< Query popup confirm for construction drag overlay.
 };
 
 /** Window numbers for network windows. */

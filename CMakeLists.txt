@@ -134,9 +134,21 @@ else()
     find_package(CURL)
 endif()
 
-# Breakpad doesn't support emscripten.
-if(NOT EMSCRIPTEN)
+# Breakpad doesn't support emscripten or Android.
+if(NOT EMSCRIPTEN AND NOT ANDROID)
     find_package(unofficial-breakpad NO_MODULE)
+endif()
+
+if(ANDROID)
+    if(NOT SDL3_PATH AND NOT TARGET SDL3::SDL3)
+        if(DEFINED ENV{SDL3_PATH})
+            set(SDL3_PATH $ENV{SDL3_PATH})
+        endif()
+    endif()
+    if(SDL3_PATH AND NOT TARGET SDL3::SDL3)
+        add_subdirectory("${SDL3_PATH}" "${CMAKE_BINARY_DIR}/SDL3_build")
+    endif()
+    link_libraries(android log)
 endif()
 
 if(NOT OPTION_DEDICATED)
@@ -145,7 +157,7 @@ if(NOT OPTION_DEDICATED)
         find_package(D3D11)
     else()
         find_package(Allegro)
-        if(NOT APPLE)
+        if(NOT APPLE AND NOT ANDROID)
             find_package(Freetype)
             find_package(SDL3)
             find_package(Fluidsynth)
@@ -154,6 +166,12 @@ if(NOT OPTION_DEDICATED)
             endif()
             find_package(Harfbuzz)
             find_package(ICU OPTIONAL_COMPONENTS i18n uc)
+        elseif(ANDROID)
+            if(NOT TARGET SDL3::SDL3)
+                find_package(SDL3)
+            else()
+                set(SDL3_FOUND TRUE)
+            endif()
         endif()
     endif()
     find_package(OpusFile)
@@ -170,7 +188,7 @@ if(APPLE)
     find_library(QUARTZCORE_LIBRARY QuartzCore)
 endif()
 
-if(NOT EMSCRIPTEN AND NOT OPTION_DEDICATED)
+if(NOT EMSCRIPTEN AND NOT OPTION_DEDICATED AND NOT ANDROID)
     find_package(OpenGL COMPONENTS OpenGL)
 endif()
 
@@ -187,7 +205,7 @@ check_ipo_supported(RESULT IPO_FOUND)
 
 show_options()
 
-if(UNIX AND NOT APPLE AND NOT OPTION_DEDICATED)
+if(UNIX AND NOT APPLE AND NOT OPTION_DEDICATED AND NOT ANDROID)
     if(NOT SDL3_FOUND AND NOT ALLEGRO_FOUND)
         message(FATAL_ERROR "SDL3 or Allegro is required for this platform")
     endif()
@@ -243,10 +261,18 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 include(MSVCFilters)
 
 add_library(openttd_lib OBJECT ${GENERATED_SOURCE_FILES})
-add_executable(openttd WIN32)
-add_executable(openttd_test)
-set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
-# All other files are added via target_sources()
+if(ANDROID)
+    # SDLActivity loads a shared library named "openttd" (or "main").
+    add_library(openttd SHARED)
+    set_target_properties(openttd PROPERTIES OUTPUT_NAME "openttd")
+else()
+    add_executable(openttd WIN32)
+    set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
+endif()
+if(NOT ANDROID)
+    add_executable(openttd_test)
+    # All other files are added via target_sources()
+endif()
 
 if(MSVC)
     # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
@@ -288,13 +314,14 @@ target_link_libraries(openttd
     openttd::basesets
 )
 
-target_link_libraries(openttd_test PRIVATE openttd_lib)
 if(ANDROID)
-    target_link_libraries(openttd_test PRIVATE log)
+    target_link_libraries(openttd SDL3::SDL3-shared android log)
+    target_link_libraries(openttd_lib android log)
+else()
+    target_link_libraries(openttd_test PRIVATE openttd_lib)
+    include(Catch)
+    catch_discover_tests(openttd_test)
 endif()
-
-include(Catch)
-catch_discover_tests(openttd_test)
 
 if(HAIKU)
     target_link_libraries(openttd_lib "be" "network" "midi")
@@ -318,7 +345,7 @@ if(NOT WIN32 AND NOT EMSCRIPTEN)
     target_link_libraries(openttd_lib ${CMAKE_DL_LIBS})
 endif()
 
-if(NOT EMSCRIPTEN)
+if(NOT EMSCRIPTEN AND NOT ANDROID)
     link_package(unofficial-breakpad TARGET unofficial::breakpad::libbreakpad_client)
 endif()
 
@@ -334,14 +361,16 @@ if(NOT OPTION_DEDICATED)
     link_package(OpusFile TARGET OpusFile::opusfile)
     link_package(Soxr TARGET Soxr::soxr)
 
-    if(SDL3_FOUND AND OPENGL_FOUND AND UNIX)
-        # SDL3 dynamically loads OpenGL if needed, so do not link to OpenGL when
-        # on Linux. For Windows, we need to link to OpenGL as we also have a win32
-        # driver using it.
-        add_definitions(-DWITH_OPENGL)
-        message(STATUS "OpenGL found -- -DWITH_OPENGL -- (via SDL3)")
-    else()
-        link_package(OpenGL TARGET OpenGL::GL)
+    if(NOT ANDROID)
+        if(SDL3_FOUND AND OPENGL_FOUND AND UNIX)
+            # SDL3 dynamically loads OpenGL if needed, so do not link to OpenGL when
+            # on Linux. For Windows, we need to link to OpenGL as we also have a win32
+            # driver using it.
+            add_definitions(-DWITH_OPENGL)
+            message(STATUS "OpenGL found -- -DWITH_OPENGL -- (via SDL3)")
+        else()
+            link_package(OpenGL TARGET OpenGL::GL)
+        endif()
     endif()
 endif()
 
